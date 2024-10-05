@@ -1,5 +1,7 @@
-
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+
+const apiSecret = process.env.NEXT_PUBLIC_CLIENT_SECRET;
+const clientId = process.env.NEXT_PUBLIC_CLIENT_ID;
 
 export const spotifyApi = createApi({
   reducerPath: 'spotifyApi',
@@ -8,10 +10,24 @@ export const spotifyApi = createApi({
   }),
   endpoints: (builder) => ({
     getTopArtists: builder.query({
-      query: ({ timeRange = 'short_term', limit = 10 }) =>
-        `me/top/artists?time_range=${timeRange}&limit=${limit}`,  // Ensure this returns a string
+      query: ({ timeRange, limit }) =>
+        `me/top/artists?time_range=${timeRange}&limit=${limit}`, // Spotify API endpoint for user's top artists
+    }),
+    getAccessToken: builder.query({
+      query: () => ({
+        url: 'https://accounts.spotify.com/api/token',
+        method: 'POST',
+        body: new URLSearchParams({
+          grant_type: 'client_credentials',
+          client_id: clientId,
+          client_secret: apiSecret,
+        }).toString(),
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      }),
     }),
   }),
 });
 
-export const { useGetTopArtistsQuery } = spotifyApi;
+export const { useGetTopArtistsQuery, useGetAccessTokenQuery } = spotifyApi;

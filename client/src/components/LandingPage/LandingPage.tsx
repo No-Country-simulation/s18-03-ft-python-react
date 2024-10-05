@@ -1,7 +1,13 @@
+'use client'
 import React from 'react'
 import { ArrowRightIcon } from '@heroicons/react/24/solid'
+import { useGetAccessTokenQuery } from '@/services/spotifyApi'
+
+// components
+import MostListened from './components/MostListened'
 
 export default function LandingPage() {
+  const {data, error, isLoading} = useGetAccessTokenQuery()
   return (
     <main className='w-[90%] mx-auto'>
       <header className='pt-1 flex flex-col gap-[1rem]'>
@@ -13,6 +19,7 @@ export default function LandingPage() {
       
       <section className='mt-[1rem]'>
         <h2 className='text-center font-semibold text-[1.2rem]'>Highlights</h2>
+        <MostListened/>
       </section>
     </main>
   )
