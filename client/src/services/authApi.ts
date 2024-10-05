@@ -4,9 +4,6 @@ export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://api.spotify.com/v1',
-    prepareHeaders: (headers)=> {
-      headers.set("Content-Type", "application/x-www-form-urlencoded",)
-    }
   }),
   endpoints: (builder) => ({
     getAccessToken: builder.mutation({
@@ -14,6 +11,9 @@ export const authApi = createApi({
         url: 'https://accounts.spotify.com/api/token',
         method: 'POST',
         body: body,
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        }
       }),
     }),
   }),

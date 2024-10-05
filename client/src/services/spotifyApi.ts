@@ -1,19 +1,24 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+import { useAppSelector } from "@/redux/hooks";
+
+
 export const spotifyApi = createApi({
   reducerPath: 'spotifyApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://api.spotify.com/v1',
-    prepareHeaders: (headers)=> {
-      headers.set("Content-Type", "application/x-www-form-urlencoded",)
-    }
   }),
   endpoints: (builder) => ({
-    getTopArtists: builder.query({
-      query: ({ timeRange, limit }) =>
-        `me/top/artists?time_range=${timeRange}&limit=${limit}`, // Spotify API endpoint for user's top artists
+    getArtisData: builder.query({
+      query: ({id, appToken})=> (console.log(appToken),{
+        url: `https://api.spotify.com/v1/artists/${id}`,
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${appToken}`
+        }
+      })
     }),
   }),
 });
 
-export const { useGetTopArtistsQuery } = spotifyApi;
+export const { useGetArtisDataQuery } = spotifyApi;
