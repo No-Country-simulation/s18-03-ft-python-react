@@ -26,6 +26,9 @@ export const metadata: Metadata = {
   description: "Find your music data and music enjoyers",
 };
 
+// redux
+import { ReduxProvider } from "@/redux/ReduxProvider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -36,7 +39,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased`}
       >
+        <ReduxProvider>
         {children}
+        </ReduxProvider>
       </body>
     </html>
   );
