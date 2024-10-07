@@ -1,8 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-import { useAppSelector } from "@/redux/hooks";
-
-
 export const spotifyApi = createApi({
   reducerPath: 'spotifyApi',
   baseQuery: fetchBaseQuery({

@@ -1,12 +1,12 @@
 'use client'
-import React, {useEffect} from 'react'
+import React from 'react'
 import { ArrowRightIcon } from '@heroicons/react/24/solid'
 import useRefreshAppToken from '@/hooks/refreshAppToken'
 // components
 import MostListened from './components/MostListened'
 
 export default function LandingPage() {
-  const {appToken, onRefreshToken} = useRefreshAppToken()
+  const {appToken} = useRefreshAppToken()
   console.log(appToken)
   
   return (
