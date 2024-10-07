@@ -11,7 +11,7 @@ interface User {
 // Define the UserState interface
 interface UserState {
   user: User | null;
-  appToken: {token: string} | null
+  appToken: {token: string, expiration: number} | null
 }
 
 const initialState: UserState = {
@@ -26,7 +26,7 @@ const userSlice = createSlice({
     setUser: (state, action: PayloadAction<User>) => {
       state.user = action.payload;
     },
-    setToken: (state, action: PayloadAction<{token: string}>) => {
+    setToken: (state, action: PayloadAction<{token: string, expiration: number}>) => {
       state.appToken = action.payload;
     },
   },
