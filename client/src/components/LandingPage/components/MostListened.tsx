@@ -56,7 +56,9 @@ export default function MostListened() {
               </p>
             </div>
           </div>
-          <MostListenedSongs artistId={mostPopularArtist?.id} appToken={appToken}/>
+          {appToken && (
+            <MostListenedSongs artistId={mostPopularArtist?.id} appToken={appToken}/>
+          )}
 
         </>
       )}
