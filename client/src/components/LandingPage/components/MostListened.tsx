@@ -30,19 +30,19 @@ export default function MostListened() {
   if (error) return <p className="text-center text-red-500">Error</p>;
 
   return (
-    <article className="relative flex flex-col justify-center items-center  p-4 rounded-lg shadow-md ">
-      <h3 className="text-spotify-green text-lg font-bold mb-4">
+    <article className="">
+      <h3 className="text-spotify-green text-center text-lg font-bold mb-4">
         Popular Right Now
       </h3>
       {mostPopularArtist && (
         <>
-          <div className="relative flex flex-col items-center">
+          <div className="relative">
             {/* Artist Image */}
             <Image
               src={mostPopularArtist.images[0]?.url}
-              width={600}
-              height={600}
-              className="rounded-lg"
+              width={620}
+              height={620}
+              // className="rounded-lg"
               alt={mostPopularArtist.name}
             />
 
