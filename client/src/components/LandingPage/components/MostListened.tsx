@@ -1,6 +1,8 @@
 import React from "react";
 import { useAppSelector } from "@/redux/hooks";
 import { useGetPopularArtistsQuery } from "@/services/spotifyApi";
+import MostListenedSongs from "./MostListenedSongs";
+
 import Image from "next/image";
 import { Artist } from "@/types";
 
@@ -20,6 +22,8 @@ export default function MostListened() {
   const mostPopularArtist = artistList
     ?.slice()
     .sort((a: Artist, b: Artist) => b.popularity - a.popularity)[0];
+
+    console.log({mostPopularArtist})
 
   if (isLoading)
     return <p className="text-center text-spotify-white">Loading...</p>;
@@ -52,6 +56,8 @@ export default function MostListened() {
               </p>
             </div>
           </div>
+          <MostListenedSongs artistId={mostPopularArtist?.id} appToken={appToken}/>
+
         </>
       )}
     </article>

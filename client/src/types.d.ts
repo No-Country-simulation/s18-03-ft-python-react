@@ -14,4 +14,22 @@ export interface Artist {
     url: string;
     width: number;
 }
+
+export interface Song {
+  id: string;
+  name: string;
+  album: SongAlbum;
+  artists: Artist[];
+  popularity: number;
+  external_urls: {
+    spotify: string;
+  };
+  preview_url: string | null;
+}
+
+export interface songAlbum {
+  images: ArtistImage[]
+  name: string
+  release_date: string
+}
   
