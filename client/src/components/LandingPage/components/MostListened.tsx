@@ -30,18 +30,18 @@ export default function MostListened() {
   if (error) return <p className="text-center text-red-500">Error</p>;
 
   return (
-    <article className="relative flex flex-col justify-center items-center bg-spotify-light-gray w-[90%] mx-auto p-4 rounded-lg shadow-md">
+    <article className="relative flex flex-col justify-center items-center  p-4 rounded-lg shadow-md ">
       <h3 className="text-spotify-green text-lg font-bold mb-4">
         Popular Right Now
       </h3>
       {mostPopularArtist && (
         <>
-          <div className="relative">
+          <div className="relative flex flex-col items-center">
             {/* Artist Image */}
             <Image
               src={mostPopularArtist.images[0]?.url}
-              width={300}
-              height={300}
+              width={600}
+              height={600}
               className="rounded-lg"
               alt={mostPopularArtist.name}
             />
@@ -56,9 +56,11 @@ export default function MostListened() {
               </p>
             </div>
           </div>
+
           {appToken && (
             <MostListenedSongs artistId={mostPopularArtist?.id} appToken={appToken}/>
           )}
+          
 
         </>
       )}

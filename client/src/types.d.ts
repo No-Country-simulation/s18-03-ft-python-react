@@ -27,7 +27,7 @@ export interface Song {
   preview_url: string | null;
 }
 
-export interface songAlbum {
+export interface songAlbum {              
   images: ArtistImage[]
   name: string
   release_date: string

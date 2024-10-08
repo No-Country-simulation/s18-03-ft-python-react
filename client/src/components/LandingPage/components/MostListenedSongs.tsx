@@ -1,9 +1,9 @@
 import React from "react";
+import Image from "next/image";
+import { Artist, Song } from "@/types";
 
 // redux
 import { useGetPopularArtistPopularSongsQuery } from "@/services/spotifyApi";
-
-import { Song } from "@/types";
 
 interface Props {
   artistId: string;
@@ -15,31 +15,32 @@ export default function MostListenedSongs({ artistId, appToken }: Props) {
     artistId,
     appToken,
   });
-  const songs = data?.tracks;
+  const songs = data?.tracks?.slice(0, 5); // Limit to 5 songs
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error loading songs.</p>;
 
   return (
-    <div>
+    <div className="w-[100%] mx-auto flex flex-col gap-[1rem] rounded pt-3">
       {songs?.map((song: Song) => (
-        <div key={song.id} className="song-item">
-          {/* Song Name */}
-          <h3>{song.name}</h3>
-
+        <div key={song.id} className="flex gap-[.3em]">
           {/* Album Information */}
+          <Image
+            src={song.album.images[0]?.url}
+            alt={`${song.album.name} cover`}
+            width={50}
+            height={100}
+            className="rounded-lg"
+          />
           <div>
-            <img
-              src={song.album.images[0]?.url}
-              alt={`${song.album.name} cover`}
-              width={100}
-              height={100}
-            />
-            <p>Album: {song.album.name}</p>
-            <p>Release Date: {song.album.release_date}</p>
+            <h3>{song.name}</h3>
+            {song.album?.artists?.map((artist: Artist) => (
+              <p key={artist.id}>{artist?.name}</p>
+            ))}
           </div>
         </div>
       ))}
     </div>
   );
 }
+
