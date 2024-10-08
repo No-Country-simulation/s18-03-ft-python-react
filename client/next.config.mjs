@@ -8,6 +8,12 @@ const nextConfig = {
           port: '',  
           pathname: '/image/**', // Match all images under the /image path
         },
+        {
+          protocol: 'https',
+          hostname: 'image-cdn-ak.spotifycdn.com',
+          port: '',  
+          pathname: '/image/**',
+        }
       ],
     },
   };
