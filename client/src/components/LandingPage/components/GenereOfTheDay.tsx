@@ -7,6 +7,9 @@ import {
 import Image from "next/image";
 import React from "react";
 
+//types
+import { Song } from "@/types";
+
 const GenereOfTheDay = () => {
   const appToken = useAppSelector((state) => state.userReducer.appToken?.token);
 
@@ -39,23 +42,22 @@ const GenereOfTheDay = () => {
   }
 
   return (
-    <article className=" w-full flex flex-col md:flex-row gap-8 px-8 py-4 mx-auto">
-      <section className="mt-[2rem]  px-4 w-[90%]">
+    <>
+      <section className="">
         <div className="flex flex-col gap-4">
-        <p className="text-start font-bold font-sans  text-lg text-[#63707F]">
-          {" "}
-          Genre of the Day
-        </p>
-        <h2 className="text-start font-bold font-sans text-[1.2rem] text-white">
-          {" "}
-          {genreOfTheDay.toUpperCase()}{" "}
-        </h2>
-
+          <p className="text-start font-bold font-sans  text-lg text-[#63707F]">
+            {" "}
+            Genre of the Day
+          </p>
+          <h2 className="text-start font-bold font-sans text-[1.2rem] text-white">
+            {" "}
+            {genreOfTheDay.toUpperCase()}{" "}
+          </h2>
         </div>
-        {songsData?.tracks?.items?.map((song) => (
+        {songsData?.tracks?.items?.map((song: Song) => (
           <div
             key={song.id}
-            className=" relative flex flex-col items-start  w-[90%] mx-auto p-4 rounded-lg shadow-md mt-6"
+            className="relative  flex flex-col items-start rounded-lg shadow-md mt-6"
           >
             <div className="flex justify-center items-center">
               {/* Artist Image */}
@@ -79,24 +81,30 @@ const GenereOfTheDay = () => {
         ))}
       </section>
 
-      <section className="mt-[2rem]  w-[100%] ">
-        <div className="mt-[1rem] flex flex-col gap-4 items-start px-4 py-2 ">
-          <Image alt="Playlist"
+      <section className="mt-[2rem] w-[100%] items-center justify-center flex">
+        <div className="flex flex-col items-center justify-center max-w-[400px] text-center">
+          <Image
+            alt="Playlist"
             src={playlistData.playlists.items[0].images[0].url}
-            width={200}
+            width={300}
             height={300}
             className="rounded-lg"
           />
-          <p className="text-white font-sans">
+          <p className="text-white font-sans font-bold mb-2">
             {playlistData?.playlists?.items[0]?.name}
           </p>
 
-           <p className="text-white font-sans">{playlistData?.playlists?.items[0]?.owner.display_name}</p> 
-           <p className="text-white font-sans md:w-[73%]">{playlistData?.playlists?.items[0]?.description}</p>
+          <p className="text-white font-sans font-medium mb-2">
+            Playlist owner:{" "}
+            {playlistData?.playlists?.items[0]?.owner.display_name}
+          </p>
 
+          <p className="text-white font-sans font-light md:w-[73%] mb-4">
+            {playlistData?.playlists?.items[0]?.description}
+          </p>
         </div>
       </section>
-    </article>
+    </>
   );
 };
 

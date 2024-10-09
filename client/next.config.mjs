@@ -10,9 +10,16 @@ const nextConfig = {
         },
         {
           protocol: 'https',
-          hostname: 'image-cdn-ak.spotifycdn.com',
+          hostname: 'image-cdn-fa.spotifycdn.com', 
           port: '',  
           pathname: '/image/**',
+        },
+        {
+          protocol: 'https',
+          hostname: 'image-cdn-ak.spotifycdn.com', 
+          port: '',  
+          pathname: '/image/**',
+
         }
       ],
     },

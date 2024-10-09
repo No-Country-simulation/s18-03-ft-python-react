@@ -17,9 +17,9 @@ const config: Config = {
           // font colors
           white: '#FFFFFF',
           // we can use this one to separete sections
-          'light-gray': '#B3B3B3',
+          'light-gray': '#17171C',
           //hover to those sections where we got light-gray
-          'dark-gray': '#121212',
+          'dark-gray': '#090A0C',
         }
       },
     },
