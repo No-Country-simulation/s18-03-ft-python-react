@@ -22,7 +22,7 @@ export default function LandingPage() {
         </p>
         <a
           href="/login"
-          className="text-spotify-green rounded font-bold flex gap-[.2rem] justify-center "
+          className="text-spotify-green rounded font-bold flex gap-[.2rem] justify-center mx-auto max-w-[160px] text-center"
         >
           Log in <ArrowRightIcon className="size-6 text-spotify-green" />{" "}
         </a>
@@ -32,11 +32,12 @@ export default function LandingPage() {
         <h2 className='text-center font-semibold text-[1.2rem]'>Highlights</h2>
         <div className='mt-[1rem] flex flex-col justify-center gap-[1rem] md:flex-row md:justify-start w-[100%]'>
         <MostListened/>
+        {/* este otro es la cancion del dia */}
         <MostListened/>
         </div>
       </section>
 
-      <section className="bg-spotify-light-gray mt-[1rem] flex flex-col justify-center gap-[1rem] md:flex-row w-[100%]">
+      <section className="bg-spotify-light-gray mt-[1rem] rounded-lg w-full p-2 md:flex flex flex-col md:flex-row justify-center items-center">
       <GenereOfTheDay/>
       </section>
     </main>

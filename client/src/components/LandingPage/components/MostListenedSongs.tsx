@@ -21,9 +21,9 @@ export default function MostListenedSongs({ artistId, appToken }: Props) {
   if (error) return <p>Error loading songs.</p>;
 
   return (
-    <div className="w-[100%] mx-auto flex flex-col gap-[1rem] bg-spotify-light-gray rounded pt-3 pb-3">
+    <div className="w-[100%] mx-auto flex flex-col gap-[1rem] bg-spotify-light-gray rounded pt-3 pb-5">
       {songs?.map((song: Song) => (
-        <div key={song.id} className="flex gap-[.3em] w-[90%] mx-auto">
+        <div key={song.id} className="flex gap-[.3em] pl-2">
           {/* Album Information */}
           <Image
             src={song.album.images[0]?.url}
