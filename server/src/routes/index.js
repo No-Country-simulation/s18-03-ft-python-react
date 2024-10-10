@@ -9,6 +9,7 @@ import { getUserToken } from '../controllers/authControllers/getUserToken.js'
 const clientId = process.env.SPOTIFY_CLIENT_ID;
 const redirectUri = process.env.SPOTIFY_REDIRECT_URI; 
 const scopes = 'user-read-private user-read-email'; // Adjust scopes as needed
+const stateKey = 'spotify_auth_state'
 
 const routes = express.Router()
 
@@ -24,8 +25,12 @@ routes.get('/login', (req, res) => {
       });
   
     // Optionally, save the state in the session or cookies for verification later  
+    res.cookie(stateKey, state)
+    console.log(stateKey, state)
     res.redirect(authorizeUrl);
   });
+
+routes.get('/callback', getUserToken)
 
 routes.get('/app-token', getAppToken)
 

@@ -16,7 +16,7 @@ export const authApi = createApi({
         }
       }),
     }),
-    getUserAcess: builder.mutation({
+    getCallback: builder.mutation({
       query: ()=> ({
         url: 'http://localhost3001/infinify/login',
         method: "GET"
@@ -25,4 +25,4 @@ export const authApi = createApi({
   }),
 });
 
-export const { useGetAccessTokenMutation, useGetUserAcessMutation } = authApi
+export const { useGetAccessTokenMutation, useGetCallbackMutation } = authApi
