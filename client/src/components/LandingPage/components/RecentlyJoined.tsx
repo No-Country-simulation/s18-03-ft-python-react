@@ -1,5 +1,11 @@
+import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
+import { SerializedError } from "@reduxjs/toolkit";
 import Image from "next/image";
-import demoData from "../../../services/demoRecentlyJoined.json"; // Datos demos, mientras se crea el backend
+import { useAppSelector } from "@/redux/hooks";
+import { useGetRecentlyJoinedQuery } from "@/services/RecentlyApi";
+
+// Datos demos, mientras se crea el backend
+// import demoData from "../../../services/demoRecentlyJoined.json";
 
 interface url {
   url: string;
@@ -10,6 +16,16 @@ interface User {
   display_name: string;
 }
 
+// Componente para mostrar si hay error
+function Error({text, error}: {text:string, error: FetchBaseQueryError | SerializedError | undefined}) {
+  return error && <div className="text-red-700 font-bold mt-8">{text}</div>
+}
+// Componente para mostrar si se esta cargando
+function IsLoding({isLoading}: {isLoading: boolean}) {
+  return isLoading && <div className="text-white mt-8">Loading...</div>
+}
+
+// Componente para mostrar los datos de un usuario
 function CardUserRJ({user}: {user: User}) {
   return (
     <li className="text-white text-base">
@@ -27,21 +43,30 @@ function CardUserRJ({user}: {user: User}) {
   )
 }
 
-export default function RecentlyJoined() { 
+//  Componente principal
+export default function RecentlyJoined() {
+  const appToken = useAppSelector((state) => state.userReducer.appToken?.token);
+
+  const { data:recently, error, isLoading } = useGetRecentlyJoinedQuery({
+    appToken,
+    limit:"10"
+  });
+
   return (
   <>
     <h2 className="font-extrabold text-2xl md:text-3xl text-center md:text-left">
       Recently Joined
     </h2>
-    <div id="users" className="mt-8">
-      <ul className="flex flex-wrap gap-4 justify-center md:justify-start">
-        {
-          demoData.map((user: User, key: number) => (
-              <CardUserRJ user={user} key={key}/>
-          ))
-        }
-      </ul>
-    </div>
+    <Error error={error} text="Error"/>
+    <IsLoding isLoading={isLoading}/>
+    <ul className="flex flex-wrap gap-4 mt-8 justify-center md:justify-start">
+      {
+        recently?.length === 0 ? <Error error={{status:0,data:null}} text="No data"/> :
+        recently?.map((user: User, key: number) => (
+          <CardUserRJ user={user} key={key}/>
+        ))
+      }
+    </ul>
   </>
   );
 }
