@@ -8,6 +8,9 @@ import GenereOfTheDay from "./components/GenereOfTheDay";
 import PopularSongNow from "./components/PopularSongNow";
 import ArtisOfTheDay from "./components/ArtisOfTheDay";
 
+import RecentlyJoined from "./components/RecentlyJoined";
+
+
 export default function LandingPage() {
   const { appToken } = useRefreshAppToken();
   console.log(appToken);
@@ -42,9 +45,17 @@ export default function LandingPage() {
       <section className="bg-spotify-light-gray mt-[1rem] rounded-lg w-full p-2 md:flex flex flex-col md:flex-row justify-center items-center">
       <GenereOfTheDay/>
       </section>
+      
+        
 
       <section>
         <PopularSongNow/>
+              </section>
+
+      
+      <section className="bg-spotify-light-gray mt-4 mb-4 rounded-lg w-full p-6">
+        <RecentlyJoined/>
+
       </section>
     </main>
   );

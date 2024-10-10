@@ -20,6 +20,14 @@ const nextConfig = {
           port: '',  
           pathname: '/image/**',
 
+        },
+        //este hostname es temporal, se usa para recuperar datos aleatorios de muestra
+        {
+          protocol: 'https',
+          hostname: 'randomuser.me', 
+          port: '',  
+          pathname: '/api/portraits/**',
+
         }
       ],
     },
