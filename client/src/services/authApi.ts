@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://api.spotify.com/v1',
+    baseUrl: '',
   }),
   endpoints: (builder) => ({
     getAccessToken: builder.mutation({
@@ -16,7 +16,13 @@ export const authApi = createApi({
         }
       }),
     }),
+    getUserAcess: builder.mutation({
+      query: ()=> ({
+        url: 'http://localhost3001/infinify/login',
+        method: "GET"
+      })
+    })
   }),
 });
 
-export const { useGetAccessTokenMutation } = authApi
+export const { useGetAccessTokenMutation, useGetUserAcessMutation } = authApi

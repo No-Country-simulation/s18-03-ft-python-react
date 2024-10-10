@@ -8,6 +8,7 @@ import GenereOfTheDay from "./components/GenereOfTheDay";
 
 export default function LandingPage() {
   const { appToken } = useRefreshAppToken();
+  const loginRedirect = process.env.NEXT_PUBLIC_AUTHORIZE_LOGIN
   console.log(appToken);
 
   return (
@@ -21,7 +22,7 @@ export default function LandingPage() {
           Join to see your stats and engage with other music lovers!
         </p>
         <a
-          href="/login"
+          href={loginRedirect}
           className="text-spotify-green rounded font-bold flex gap-[.2rem] justify-center mx-auto max-w-[160px] text-center"
         >
           Log in <ArrowRightIcon className="size-6 text-spotify-green" />{" "}

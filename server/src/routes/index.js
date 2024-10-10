@@ -1,5 +1,7 @@
 import express from 'express'
 // import supabase from '../db'
+import crypto from 'crypto';
+import querystring from 'querystring';
 
 import { getAppToken } from '../controllers/authControllers/getAppToken.js'
 import { getUserToken } from '../controllers/authControllers/getUserToken.js'
@@ -21,9 +23,7 @@ routes.get('/login', (req, res) => {
         state: state,
       });
   
-    // Optionally, save the state in the session or cookies for verification later
-    res.cookie('spotify_auth_state', state, { httpOnly: true });
-  
+    // Optionally, save the state in the session or cookies for verification later  
     res.redirect(authorizeUrl);
   });
 
