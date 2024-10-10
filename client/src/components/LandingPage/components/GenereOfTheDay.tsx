@@ -31,7 +31,6 @@ const GenereOfTheDay = () => {
     appToken,
   });
 
-  console.log("playlistData", playlistData);
 
   if (isLoading) {
     return <div>Loading...</div>;

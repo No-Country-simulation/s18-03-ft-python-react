@@ -32,4 +32,17 @@ export interface songAlbum {
   name: string
   release_date: string
 }
-  
+
+
+export interface Playlist {
+  id: string;
+  name: string;
+  description: string;
+  href: string;
+  images: Array<{
+    url: string;
+    height: number;
+    width: number;
+  }>;
+  track: Song;
+}
