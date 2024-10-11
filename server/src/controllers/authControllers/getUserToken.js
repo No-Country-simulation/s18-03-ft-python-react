@@ -16,8 +16,9 @@ export const getUserToken = async (req, res) => {
     console.log(state)
     const stateKey = 'spotify_auth_state'
     const storedState = req.cookies ? req.cookies[stateKey] : null
+    console.log('stored state',storedState)
 
-    if (state === null) {
+    if (state === null || state !== storedState) {
       res.redirect(
         "/#" +
           querystring.stringify({
@@ -44,10 +45,16 @@ export const getUserToken = async (req, res) => {
 
       try {
         const response = await axios(authOptions)
-        const { access_token, refresh_token } = response.data;
+        const { access_token, refresh_token, expires_in } = response.data;
         console.log('accesToken', access_token)
+
+        req.session.user = {
+          accessToken: access_token,
+          refreshToken: refresh_token,
+          expiresAt: Date.now() + expires_in * 1000,
+        }
+
         res.redirect(spotifyUriWithToken)
-        res.status(200).json({access_token, refresh_token})
       } catch (error) {
         console.log('Error exchanging code for tokens:', error)
       }

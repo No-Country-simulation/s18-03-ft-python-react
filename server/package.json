@@ -12,7 +12,8 @@
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "express": "4.21.1"
+    "express": "^4.21.1",
+    "express-session": "^1.18.1"
   },
   "devDependencies": {
     "standard": "17.1.2"

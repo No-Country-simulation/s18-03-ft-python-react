@@ -5,6 +5,7 @@ import querystring from 'querystring';
 
 import { getAppToken } from '../controllers/authControllers/getAppToken.js'
 import { getUserToken } from '../controllers/authControllers/getUserToken.js'
+import { getUserInfo } from '../controllers/userControllers/getUserInfo.js';
 
 const clientId = process.env.SPOTIFY_CLIENT_ID;
 const redirectUri = process.env.SPOTIFY_REDIRECT_URI; 
@@ -31,6 +32,8 @@ routes.get('/login', (req, res) => {
   });
 
 routes.get('/callback', getUserToken)
+
+routes.get('/userInfo', getUserInfo)
 
 routes.get('/app-token', getAppToken)
 
