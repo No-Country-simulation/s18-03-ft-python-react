@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { useGetSongOfTheDayQuery } from "@/services/spotifyApi";
+import { PlayIcon } from "@heroicons/react/24/solid";
 
 export default function ArtisOfTheDay() {
   const { data: songData, isLoading, error } = useGetSongOfTheDayQuery({});
@@ -10,8 +11,7 @@ export default function ArtisOfTheDay() {
 
   const TopSong = songData?.songOfTheDay;
 
-
-  const releaseYear = 2024
+  const releaseYear = 2024;
 
   return (
     <section className="md:w-[50%]">
@@ -34,14 +34,17 @@ export default function ArtisOfTheDay() {
               <h2 className="text-spotify-white text-2xl font-bold">
                 {TopSong.songName}
               </h2>
-              <a
-                href={TopSong.spotifyUrl}
-                className="text-spotify-light-gray text-sm"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Listen on Spotify
-              </a>
+              <div className="relative">
+                <a
+                  href={TopSong.spotifyUrl}
+                  className="text-spotify-green text-sm mt-1 hover:text-spotify-black flex items-center group"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Listen on Spotify
+                  <PlayIcon className="w-5 h-5 text-spotify-green opacity-0 transform translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 ml-2" />
+                </a>
+              </div>
             </div>
           </div>
 
