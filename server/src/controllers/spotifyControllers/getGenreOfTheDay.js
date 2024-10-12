@@ -15,7 +15,7 @@ export const getGenreOfTheDay = async (req,res)=> {
     const fullResponse = {
         genreName: '',
         songInfo: {},
-        playlistInfo: {}
+        genreInfo: {}
     }
     
     try {
@@ -29,12 +29,14 @@ export const getGenreOfTheDay = async (req,res)=> {
             const genresLength = response.data.genres.length
             const randomGenre = Math.floor(Math.random()* genresLength)
 
+            console.log(genresLength)
+
             const genre = response.data.genres[randomGenre]
 
             fullResponse.genreName = genre
             fullResponse.songInfo = await genreSong(appToken, genre)
 
-        res.status(200).json(fullResponse)
+        res.status(200).json({response: fullResponse, allGenres: response.data.genres})
     } catch (error) {
         res.status(500).json({error: "error when gettinng genre of the day", errorDetails: error})
     }
@@ -64,12 +66,4 @@ const genreSong = async(appToken, genre)=> {
         return {error: 'error when getting genreSong', errorDetails: error}
     }
 
-}
-
-const getGenrePlaylist = (appToken, genre)=> {
-    try {
-        
-    } catch (error) {
-        return {error: 'error when getting genre playlist', errorDetails: error}
-    }
 }
