@@ -8,6 +8,27 @@ const nextConfig = {
           port: '',  
           pathname: '/image/**', // Match all images under the /image path
         },
+        {
+          protocol: 'https',
+          hostname: 'image-cdn-fa.spotifycdn.com', 
+          port: '',  
+          pathname: '/image/**',
+        },
+        {
+          protocol: 'https',
+          hostname: 'image-cdn-ak.spotifycdn.com', 
+          port: '',  
+          pathname: '/image/**',
+
+        },
+        //este hostname es temporal, se usa para recuperar datos aleatorios de muestra
+        {
+          protocol: 'https',
+          hostname: 'randomuser.me', 
+          port: '',  
+          pathname: '/api/portraits/**',
+
+        }
       ],
     },
   };

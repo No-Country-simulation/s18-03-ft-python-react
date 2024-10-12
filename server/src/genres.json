@@ -1,0 +1,758 @@
+[
+  {
+    "id": 1,
+    "name": "acoustic",
+    "genreInfo": "Acoustic music emphasizes natural, non-amplified instruments and organic sound. It often focuses on guitar and vocals, with roots in folk traditions.",
+    "relevantArtist": "Ed Sheeran"
+  },
+  {
+    "id": 2,
+    "name": "afrobeat",
+    "genreInfo": "Afrobeat is a fusion of traditional Nigerian and Ghanaian music, jazz, highlife, and funk, developed in the 1960s and 1970s. It is known for its complex rhythms and socially conscious lyrics.",
+    "relevantArtist": "Fela Kuti"
+  },
+  {
+    "id": 3,
+    "name": "alt-rock",
+    "genreInfo": "Alternative rock is a broad genre that emerged in the 1980s, characterized by its departure from mainstream rock, incorporating a variety of influences such as punk, post-punk, and indie rock.",
+    "relevantArtist": "Radiohead"
+  },
+  {
+    "id": 4,
+    "name": "alternative",
+    "genreInfo": "Alternative music encompasses a wide range of styles, generally existing outside the mainstream. It often reflects a countercultural or nonconformist attitude.",
+    "relevantArtist": "Nirvana"
+  },
+  {
+    "id": 5,
+    "name": "ambient",
+    "genreInfo": "Ambient music is characterized by its atmospheric, instrumental soundscapes that focus on creating a mood rather than traditional structure. Originating in the 1970s, it often features slow, evolving compositions.",
+    "relevantArtist": "Brian Eno"
+  },
+  {
+    "id": 6,
+    "name": "anime",
+    "genreInfo": "Anime music, tied to Japanese animation, includes a wide range of styles, but it often features high-energy pop or rock tracks. It has grown into its own niche within J-pop.",
+    "relevantArtist": "Yoko Kanno"
+  },
+  {
+    "id": 7,
+    "name": "black-metal",
+    "genreInfo": "Black metal is a subgenre of heavy metal, known for its extreme aggression, fast tempos, and raw, lo-fi sound. It originated in the 1980s in Scandinavia.",
+    "relevantArtist": "Mayhem"
+  },
+  {
+    "id": 8,
+    "name": "bluegrass",
+    "genreInfo": "Bluegrass is a genre of American roots music that emerged from Appalachian folk music, featuring fast tempos, acoustic string instruments, and close vocal harmonies.",
+    "relevantArtist": "Bill Monroe"
+  },
+  {
+    "id": 9,
+    "name": "blues",
+    "genreInfo": "Blues originated in the African American communities of the Deep South, combining work songs, spirituals, and folk music. It emphasizes emotional expression and often features the 12-bar structure.",
+    "relevantArtist": "B.B. King"
+  },
+  {
+    "id": 10,
+    "name": "bossanova",
+    "genreInfo": "Bossa nova is a Brazilian music genre that fuses samba rhythms with jazz harmonies. It emerged in the late 1950s and is known for its smooth, relaxing sound.",
+    "relevantArtist": "João Gilberto"
+  },
+  {
+    "id": 11,
+    "name": "brazil",
+    "genreInfo": "Brazilian music encompasses various styles, from samba and bossa nova to forró and MPB, reflecting the country's diverse cultural influences.",
+    "relevantArtist": "Gilberto Gil"
+  },
+  {
+    "id": 12,
+    "name": "breakbeat",
+    "genreInfo": "Breakbeat refers to electronic music that uses fragmented or sampled drum breaks, often associated with genres like drum and bass and early hip-hop.",
+    "relevantArtist": "The Prodigy"
+  },
+  {
+    "id": 13,
+    "name": "british",
+    "genreInfo": "British music includes various genres that originated or are popular in the UK, from British invasion rock and punk to Britpop and grime.",
+    "relevantArtist": "The Beatles"
+  },
+  {
+    "id": 14,
+    "name": "cantopop",
+    "genreInfo": "Cantopop, or Cantonese pop music, blends Chinese melodies with Western pop and rock influences, emerging in Hong Kong in the 1970s.",
+    "relevantArtist": "Leslie Cheung"
+  },
+  {
+    "id": 15,
+    "name": "chicago-house",
+    "genreInfo": "Chicago house is a genre of electronic dance music that originated in the early 1980s. It was pioneered by DJs in Chicago, combining elements of disco, funk, and soul with electronic beats.",
+    "relevantArtist": "Frankie Knuckles"
+  },
+  {
+    "id": 16,
+    "name": "children",
+    "genreInfo": "Children's music is designed for young audiences, often incorporating educational themes, simple melodies, and repetitive structures.",
+    "relevantArtist": "Raffi"
+  },
+  {
+    "id": 17,
+    "name": "chill",
+    "genreInfo": "Chill music is a broad term for relaxing, mellow music that spans genres such as ambient, downtempo, and lo-fi beats.",
+    "relevantArtist": "Bonobo"
+  },
+  {
+    "id": 18,
+    "name": "classical",
+    "genreInfo": "Classical music is a broad term for the formal, complex music traditions of the Western world, typically rooted in orchestral, piano, and chamber music.",
+    "relevantArtist": "Ludwig van Beethoven"
+  },
+  {
+    "id": 19,
+    "name": "club",
+    "genreInfo": "Club music refers to high-energy dance music played in nightclubs, typically including house, techno, and other electronic dance music styles.",
+    "relevantArtist": "David Guetta"
+  },
+  {
+    "id": 20,
+    "name": "comedy",
+    "genreInfo": "Comedy music incorporates humor and satire, often through parody or humorous lyrics, to entertain its audience.",
+    "relevantArtist": "Weird Al Yankovic"
+  },
+  {
+    "id": 21,
+    "name": "country",
+    "genreInfo": "Country music originated in the rural Southern United States in the 1920s, blending folk, blues, and Western music, often telling stories of love and hardship.",
+    "relevantArtist": "Johnny Cash"
+  },
+  {
+    "id": 22,
+    "name": "dance",
+    "genreInfo": "Dance music is a genre designed specifically for dancing, featuring strong rhythms and energetic beats, often produced with electronic instruments.",
+    "relevantArtist": "Calvin Harris"
+  },
+  {
+    "id": 23,
+    "name": "dancehall",
+    "genreInfo": "Dancehall is a genre of Jamaican popular music that emerged in the late 1970s, known for its deejay-led performances and rhythmic, upbeat sound.",
+    "relevantArtist": "Shabba Ranks"
+  },
+  {
+    "id": 24,
+    "name": "death-metal",
+    "genreInfo": "Death metal is an extreme subgenre of heavy metal, characterized by deep growling vocals, fast tempos, and aggressive guitar riffs.",
+    "relevantArtist": "Cannibal Corpse"
+  },
+  {
+    "id": 25,
+    "name": "deep-house",
+    "genreInfo": "Deep house is a subgenre of house music that emerged in the 1980s, known for its smooth, soulful sounds and complex chords.",
+    "relevantArtist": "Larry Heard"
+  },
+  {
+    "id": 26,
+    "name": "detroit-techno",
+    "genreInfo": "Detroit techno is a subgenre of techno music that originated in Detroit in the mid-1980s, combining futuristic themes with electronic beats and house music elements.",
+    "relevantArtist": "Juan Atkins"
+  },
+  {
+    "id": 27,
+    "name": "disco",
+    "genreInfo": "Disco is a genre of dance music that emerged in the 1970s, blending elements of funk, soul, pop, and salsa with upbeat rhythms and orchestral arrangements.",
+    "relevantArtist": "Donna Summer"
+  },
+  {
+    "id": 28,
+    "name": "disney",
+    "genreInfo": "Disney music typically features soundtracks from animated films produced by The Walt Disney Company, often blending orchestral and musical theater styles.",
+    "relevantArtist": "Alan Menken"
+  },
+  {
+    "id": 29,
+    "name": "drum-and-bass",
+    "genreInfo": "Drum and bass is a genre of electronic music characterized by fast breakbeats, heavy basslines, and complex rhythms. It originated in the UK in the early 1990s.",
+    "relevantArtist": "Goldie"
+  },
+  {
+    "id": 30,
+    "name": "dub",
+    "genreInfo": "Dub is a genre of electronic music that grew out of reggae in the 1960s, emphasizing remixing techniques, heavy use of reverb, and delay effects.",
+    "relevantArtist": "Lee 'Scratch' Perry"
+  },
+  {
+    "id": 31,
+    "name": "dubstep",
+    "genreInfo": "Dubstep is a genre of electronic dance music that emerged in the early 2000s, known for its heavy bass, syncopated rhythms, and wobble bass sound.",
+    "relevantArtist": "Skrillex"
+  },
+  {
+    "id": 32,
+    "name": "edm",
+    "genreInfo": "Electronic Dance Music (EDM) is a broad range of percussive electronic music genres made for nightclubs, raves, and festivals, typically with a focus on beat drops and energetic melodies.",
+    "relevantArtist": "Avicii"
+  },
+  {
+    "id": 33,
+    "name": "electro",
+    "genreInfo": "Electro is a genre of electronic music that emerged in the 1980s, characterized by the use of drum machines and heavy synthesizers, often with robotic vocals.",
+    "relevantArtist": "Afrika Bambaataa"
+  },
+  {
+    "id": 34,
+    "name": "electronic",
+    "genreInfo": "Electronic music refers to music that primarily uses electronic devices and techniques, spanning a wide variety of subgenres including house, techno, and ambient.",
+    "relevantArtist": "Kraftwerk"
+  },
+  {
+    "id": 35,
+    "name": "emo",
+    "genreInfo": "Emo is a subgenre of punk rock and alternative rock known for its emotional, introspective lyrics and dynamic guitar-driven sound.",
+    "relevantArtist": "My Chemical Romance"
+  },
+  {
+    "id": 36,
+    "name": "folk",
+    "genreInfo": "Folk music is rooted in traditional acoustic forms and is often centered on storytelling, featuring instruments like the acoustic guitar and banjo.",
+    "relevantArtist": "Bob Dylan"
+  },
+  {
+    "id": 37,
+    "name": "forro",
+    "genreInfo": "Forró is a traditional style of music from Northeast Brazil, characterized by its fast-paced rhythms and use of the accordion, zabumba, and triangle.",
+    "relevantArtist": "Luiz Gonzaga"
+  },
+  {
+    "id": 38,
+    "name": "french",
+    "genreInfo": "French music spans a range of styles, including chanson, electronic, and modern pop, often reflecting the rich cultural history of France.",
+    "relevantArtist": "Édith Piaf"
+  },
+  {
+    "id": 39,
+    "name": "funk",
+    "genreInfo": "Funk is a music genre that originated in the mid-1960s, known for its strong rhythm, groove, and the use of bass guitar to create syncopated, danceable beats.",
+    "relevantArtist": "James Brown"
+  },
+  {
+    "id": 40,
+    "name": "garage",
+    "genreInfo": "Garage music, or UK garage, is a genre of electronic music that originated in England, known for its shuffling rhythms, breakbeats, and house-influenced sounds.",
+    "relevantArtist": "Artful Dodger"
+  },
+  {
+    "id": 41,
+    "name": "german",
+    "genreInfo": "German music encompasses a wide range of genres from classical composers like Beethoven to modern electronic pioneers, reflecting Germany's strong cultural heritage.",
+    "relevantArtist": "Rammstein"
+  },
+  {
+    "id": 42,
+    "name": "gospel",
+    "genreInfo": "Gospel music is a genre of Christian music that originated in African American churches, emphasizing powerful vocals and religious themes.",
+    "relevantArtist": "Mahalia Jackson"
+  },
+  {
+    "id": 43,
+    "name": "goth",
+    "genreInfo": "Goth music emerged from post-punk in the late 1970s, characterized by its dark, melancholic sound and themes of romanticism and despair.",
+    "relevantArtist": "The Cure"
+  },
+  {
+    "id": 44,
+    "name": "grindcore",
+    "genreInfo": "Grindcore is an extreme genre of music blending hardcore punk and metal, known for its fast tempos, heavily distorted guitars, and aggressive vocals.",
+    "relevantArtist": "Napalm Death"
+  },
+  {
+    "id": 45,
+    "name": "groove",
+    "genreInfo": "Groove music emphasizes rhythm and the 'feel' of a piece, focusing on creating an infectious beat that encourages dance, often seen in genres like funk and jazz.",
+    "relevantArtist": "Tower of Power"
+  },
+  {
+    "id": 46,
+    "name": "grunge",
+    "genreInfo": "Grunge is a subgenre of alternative rock that emerged in the 1980s and became mainstream in the 1990s, known for its distorted guitars and angst-filled lyrics.",
+    "relevantArtist": "Nirvana"
+  },
+  {
+    "id": 47,
+    "name": "guitar",
+    "genreInfo": "Guitar music is a broad category that focuses on the guitar as the central instrument, spanning genres from classical to rock.",
+    "relevantArtist": "Jimi Hendrix"
+  },
+  {
+    "id": 48,
+    "name": "happy",
+    "genreInfo": "Happy music refers to upbeat, feel-good songs that are often characterized by major keys and fast tempos, designed to lift the listener's mood.",
+    "relevantArtist": "Pharrell Williams"
+  },
+  {
+    "id": 49,
+    "name": "hard-rock",
+    "genreInfo": "Hard rock is a subgenre of rock music that emphasizes heavy guitar riffs, strong rhythms, and aggressive vocals.",
+    "relevantArtist": "AC/DC"
+  },
+  {
+    "id": 50,
+    "name": "hardcore",
+    "genreInfo": "Hardcore punk is a faster, more aggressive form of punk rock that developed in the late 1970s, focusing on anti-establishment lyrics and raw sound.",
+    "relevantArtist": "Black Flag"
+  },
+  {
+    "id": 51,
+    "name": "hardstyle",
+    "genreInfo": "Hardstyle is a genre of electronic dance music that combines elements of hard trance, hardcore, and techno, known for its heavy basslines and distorted kick drums.",
+    "relevantArtist": "Headhunterz"
+  },
+  {
+    "id": 52,
+    "name": "heavy-metal",
+    "genreInfo": "Heavy metal is a genre of rock music that developed in the late 1960s and early 1970s, characterized by loud, distorted guitars, and powerful vocals.",
+    "relevantArtist": "Metallica"
+  },
+  {
+    "id": 53,
+    "name": "hip-hop",
+    "genreInfo": "Hip-hop is a cultural movement that originated in the Bronx in the 1970s, combining rapping, DJing, breakdancing, and graffiti art. Musically, it's known for its rhythmic and rhyming speech.",
+    "relevantArtist": "Tupac Shakur"
+  },
+  {
+    "id": 54,
+    "name": "holidays",
+    "genreInfo": "Holiday music encompasses songs and carols associated with various festive seasons, often focusing on Christmas and other cultural celebrations.",
+    "relevantArtist": "Mariah Carey"
+  },
+  {
+    "id": 55,
+    "name": "honky-tonk",
+    "genreInfo": "Honky-tonk is a style of country music that originated in Southern bars (honky-tonks), featuring a piano-driven, rhythm-heavy sound with themes of love and heartbreak.",
+    "relevantArtist": "Hank Williams"
+  },
+  {
+    "id": 56,
+    "name": "house",
+    "genreInfo": "House music is a genre of electronic dance music that originated in Chicago in the 1980s, known for its repetitive beats and deep basslines.",
+    "relevantArtist": "Frankie Knuckles"
+  },
+  {
+    "id": 57,
+    "name": "idm",
+    "genreInfo": "Intelligent Dance Music (IDM) is a genre of electronic music that focuses on complex rhythms and experimental sounds, often designed for listening rather than dancing.",
+    "relevantArtist": "Aphex Twin"
+  },
+  {
+    "id": 58,
+    "name": "indian",
+    "genreInfo": "Indian music encompasses a wide variety of traditional and classical music from India, known for its intricate melodies, ragas, and use of instruments like the sitar and tabla.",
+    "relevantArtist": "Ravi Shankar"
+  },
+  {
+    "id": 59,
+    "name": "indie",
+    "genreInfo": "Indie music refers to music produced independently from major commercial record labels, often associated with an experimental or DIY ethos.",
+    "relevantArtist": "Arctic Monkeys"
+  },
+  {
+    "id": 60,
+    "name": "indie-pop",
+    "genreInfo": "Indie pop is a genre that blends the melodic elements of pop music with the experimental, independent ethos of indie music, often featuring catchy hooks and an upbeat sound.",
+    "relevantArtist": "Phoenix"
+  },
+  {
+    "id": 61,
+    "name": "industrial",
+    "genreInfo": "Industrial music is a genre of experimental music that draws on harsh, mechanical sounds and themes of dystopia, developed in the late 1970s and 1980s.",
+    "relevantArtist": "Nine Inch Nails"
+  },
+  {
+    "id": 62,
+    "name": "iranian",
+    "genreInfo": "Iranian music encompasses a wide range of traditional and contemporary styles, often featuring intricate rhythms and melodies rooted in Persian classical music.",
+    "relevantArtist": "Mohammad Reza Shajarian"
+  },
+  {
+    "id": 63,
+    "name": "j-dance",
+    "genreInfo": "J-dance refers to Japanese dance music, typically featuring high-energy beats and a blend of electronic and pop music elements.",
+    "relevantArtist": "Perfume"
+  },
+  {
+    "id": 64,
+    "name": "j-idol",
+    "genreInfo": "J-idol refers to music produced by Japanese idol groups, which are often manufactured pop acts with large followings, performing catchy and upbeat songs.",
+    "relevantArtist": "AKB48"
+  },
+  {
+    "id": 65,
+    "name": "j-pop",
+    "genreInfo": "J-pop, or Japanese pop, is a genre of popular music from Japan that blends traditional music elements with Western pop and rock influences.",
+    "relevantArtist": "Hikaru Utada"
+  },
+  {
+    "id": 66,
+    "name": "j-rock",
+    "genreInfo": "J-rock, or Japanese rock, is a genre of rock music from Japan that gained international popularity in the 1990s, often featuring fast tempos and melodic elements.",
+    "relevantArtist": "X Japan"
+  },
+  {
+    "id": 67,
+    "name": "jazz",
+    "genreInfo": "Jazz is a genre of music that originated in the African-American communities of New Orleans, characterized by improvisation, syncopation, and swing rhythms.",
+    "relevantArtist": "Miles Davis"
+  },
+  {
+    "id": 68,
+    "name": "k-pop",
+    "genreInfo": "K-pop, or Korean pop music, is a genre of popular music from South Korea, blending catchy melodies, synchronized choreography, and colorful visuals.",
+    "relevantArtist": "BTS"
+  },
+  {
+    "id": 69,
+    "name": "kids",
+    "genreInfo": "Kids' music is designed for young audiences, often incorporating educational themes and simple, catchy melodies that engage children.",
+    "relevantArtist": "The Wiggles"
+  },
+  {
+    "id": 70,
+    "name": "latin",
+    "genreInfo": "Latin music encompasses a variety of styles originating from Latin America, such as salsa, merengue, and cumbia, known for its rhythmic beats and danceable tunes.",
+    "relevantArtist": "Celia Cruz"
+  },
+  {
+    "id": 71,
+    "name": "latino",
+    "genreInfo": "Latino music refers to the contemporary popular music of Latin American origin, blending traditional rhythms with modern pop, reggaeton, and hip-hop influences.",
+    "relevantArtist": "Bad Bunny"
+  },
+  {
+    "id": 72,
+    "name": "malay",
+    "genreInfo": "Malay music reflects the traditional and popular music of the Malay-speaking regions of Southeast Asia, often featuring elements of gamelan and folk traditions.",
+    "relevantArtist": "Siti Nurhaliza"
+  },
+  {
+    "id": 73,
+    "name": "mandopop",
+    "genreInfo": "Mandopop, or Mandarin pop, is a genre of Chinese popular music sung in Mandarin, often featuring romantic ballads and catchy pop tunes.",
+    "relevantArtist": "Jay Chou"
+  },
+  {
+    "id": 74,
+    "name": "metal",
+    "genreInfo": "Metal is a genre of rock music that developed in the late 1960s and early 1970s, characterized by distorted guitar sounds, powerful vocals, and loud, aggressive rhythms.",
+    "relevantArtist": "Black Sabbath"
+  },
+  {
+    "id": 75,
+    "name": "metal-misc",
+    "genreInfo": "Metal-misc refers to subgenres of metal that blend various influences, creating unique and hybrid sounds. This can include avant-garde and progressive metal.",
+    "relevantArtist": "Opeth"
+  },
+  {
+    "id": 76,
+    "name": "metalcore",
+    "genreInfo": "Metalcore is a fusion of extreme metal and hardcore punk, characterized by heavy guitar riffs, breakdowns, and aggressive vocals.",
+    "relevantArtist": "Killswitch Engage"
+  },
+  {
+    "id": 77,
+    "name": "minimal-techno",
+    "genreInfo": "Minimal techno is a subgenre of techno music that focuses on simplicity, using repetitive rhythms and subtle variations to create hypnotic effects.",
+    "relevantArtist": "Richie Hawtin"
+  },
+  {
+    "id": 78,
+    "name": "movies",
+    "genreInfo": "Movie soundtracks include music composed for films, often featuring orchestral scores or popular songs that complement the film's mood and themes.",
+    "relevantArtist": "Hans Zimmer"
+  },
+  {
+    "id": 79,
+    "name": "mpb",
+    "genreInfo": "MPB, or Música Popular Brasileira, is a genre of Brazilian popular music that blends traditional Brazilian music with modern influences like jazz and rock.",
+    "relevantArtist": "Caetano Veloso"
+  },
+  {
+    "id": 80,
+    "name": "new-age",
+    "genreInfo": "New-age music is a genre that emphasizes calmness and relaxation, often using synthesizers and natural sounds to create an ambient atmosphere.",
+    "relevantArtist": "Enya"
+  },
+  {
+    "id": 81,
+    "name": "new-release",
+    "genreInfo": "New-release music refers to the latest albums or singles released by artists across various genres, often featured on music streaming platforms.",
+    "relevantArtist": "Taylor Swift"
+  },
+  {
+    "id": 82,
+    "name": "opera",
+    "genreInfo": "Opera is a classical music genre that combines dramatic storytelling with singing and orchestral accompaniment, featuring arias, recitatives, and choruses.",
+    "relevantArtist": "Luciano Pavarotti"
+  },
+  {
+    "id": 83,
+    "name": "pagode",
+    "genreInfo": "Pagode is a subgenre of samba from Brazil, featuring lively rhythms and upbeat melodies, often performed with acoustic instruments.",
+    "relevantArtist": "Zeca Pagodinho"
+  },
+  {
+    "id": 84,
+    "name": "party",
+    "genreInfo": "Party music refers to high-energy tracks designed to be played in social settings, often with infectious beats and fun, celebratory lyrics.",
+    "relevantArtist": "Pitbull"
+  },
+  {
+    "id": 85,
+    "name": "philippines-opm",
+    "genreInfo": "Original Pilipino Music (OPM) refers to popular music in the Philippines, blending traditional Filipino sounds with modern pop and rock influences.",
+    "relevantArtist": "Sarah Geronimo"
+  },
+  {
+    "id": 86,
+    "name": "piano",
+    "genreInfo": "Piano music spans various genres, emphasizing the piano as the primary instrument, whether in classical, jazz, or pop settings.",
+    "relevantArtist": "Ludovico Einaudi"
+  },
+  {
+    "id": 87,
+    "name": "pop",
+    "genreInfo": "Pop music is a genre characterized by its catchy melodies, simple structures, and wide appeal, often produced with a focus on mainstream success.",
+    "relevantArtist": "Michael Jackson"
+  },
+  {
+    "id": 88,
+    "name": "pop-film",
+    "genreInfo": "Pop-film music refers to popular songs featured in movie soundtracks, often contributing to the film's commercial success.",
+    "relevantArtist": "Elton John"
+  },
+  {
+    "id": 89,
+    "name": "post-dubstep",
+    "genreInfo": "Post-dubstep is a genre that evolved from dubstep, incorporating elements of ambient, R&B, and experimental music to create a more textured sound.",
+    "relevantArtist": "James Blake"
+  },
+  {
+    "id": 90,
+    "name": "power-pop",
+    "genreInfo": "Power pop is a genre that combines the catchy melodies of pop with the energy and guitar-driven sound of rock music.",
+    "relevantArtist": "Cheap Trick"
+  },
+  {
+    "id": 91,
+    "name": "progressive-house",
+    "genreInfo": "Progressive house is a subgenre of house music characterized by its gradual builds and layers, creating a smooth and atmospheric experience.",
+    "relevantArtist": "Sasha"
+  },
+  {
+    "id": 92,
+    "name": "psych-rock",
+    "genreInfo": "Psychedelic rock is a style of rock music that emerged in the 1960s, known for its experimental sounds, often achieved through distortion, reverb, and surreal lyrics.",
+    "relevantArtist": "Pink Floyd"
+  },
+  {
+    "id": 93,
+    "name": "punk",
+    "genreInfo": "Punk music is a genre that emerged in the 1970s, characterized by its fast, raw sound and anti-establishment lyrics, often rejecting mainstream culture.",
+    "relevantArtist": "The Ramones"
+  },
+  {
+    "id": 94,
+    "name": "punk-rock",
+    "genreInfo": "Punk rock is a subgenre of punk music that focuses on aggressive guitar riffs, fast tempos, and a rebellious attitude, often criticizing society and politics.",
+    "relevantArtist": "The Clash"
+  },
+  {
+    "id": 95,
+    "name": "r-n-b",
+    "genreInfo": "R&B, or rhythm and blues, is a genre of popular music that combines elements of soul, funk, and hip-hop, known for its smooth vocals and emotional delivery.",
+    "relevantArtist": "Beyoncé"
+  },
+  {
+    "id": 96,
+    "name": "rainy-day",
+    "genreInfo": "Rainy-day music refers to mellow, introspective songs that create a calm and reflective atmosphere, often played during quiet or rainy days.",
+    "relevantArtist": "Norah Jones"
+  },
+  {
+    "id": 97,
+    "name": "reggae",
+    "genreInfo": "Reggae is a genre of music that originated in Jamaica in the late 1960s, characterized by its laid-back rhythm, offbeat accents, and socially conscious lyrics.",
+    "relevantArtist": "Bob Marley"
+  },
+  {
+    "id": 98,
+    "name": "reggaeton",
+    "genreInfo": "Reggaeton is a genre of Latin music that originated in Puerto Rico, blending hip-hop, dancehall, and Latin rhythms, known for its syncopated beat and energetic flow.",
+    "relevantArtist": "Daddy Yankee"
+  },
+  {
+    "id": 99,
+    "name": "road-trip",
+    "genreInfo": "Road-trip music refers to upbeat, feel-good songs that are perfect for long drives, often featuring catchy tunes and a sense of adventure.",
+    "relevantArtist": "Tom Petty"
+  },
+  {
+    "id": 100,
+    "name": "rock",
+    "genreInfo": "Rock music is a genre that originated in the 1950s, characterized by electric guitars, strong rhythms, and powerful vocals, evolving into countless subgenres.",
+    "relevantArtist": "Led Zeppelin"
+  },
+  {
+    "id": 101,
+    "name": "rock-n-roll",
+    "genreInfo": "Rock 'n' roll is a genre of popular music that originated in the 1950s, blending rhythm and blues with country music, characterized by energetic beats and simple, catchy melodies.",
+    "relevantArtist": "Elvis Presley"
+  },
+  {
+    "id": 102,
+    "name": "rockabilly",
+    "genreInfo": "Rockabilly is one of the earliest styles of rock and roll, blending country with rhythm and blues, characterized by its upbeat tempo and twangy guitar sounds.",
+    "relevantArtist": "Johnny Cash"
+  },
+  {
+    "id": 103,
+    "name": "romance",
+    "genreInfo": "Romantic music refers to songs with themes of love and affection, often characterized by slow tempos, tender lyrics, and sentimental melodies.",
+    "relevantArtist": "Frank Sinatra"
+  },
+  {
+    "id": 104,
+    "name": "sad",
+    "genreInfo": "Sad music refers to emotionally charged songs that explore themes of heartbreak, loss, and melancholy, often featuring slower tempos and introspective lyrics.",
+    "relevantArtist": "Adele"
+  },
+  {
+    "id": 105,
+    "name": "salsa",
+    "genreInfo": "Salsa is a genre of Latin dance music that originated in the Caribbean, blending elements of Cuban son, mambo, and Latin jazz with energetic, danceable rhythms.",
+    "relevantArtist": "Héctor Lavoe"
+  },
+  {
+    "id": 106,
+    "name": "samba",
+    "genreInfo": "Samba is a lively Brazilian music genre and dance style that originated from African rhythms, characterized by its syncopated beats and joyful melodies.",
+    "relevantArtist": "Carmen Miranda"
+  },
+  {
+    "id": 107,
+    "name": "sertanejo",
+    "genreInfo": "Sertanejo is a genre of Brazilian country music that originated in rural Brazil, featuring acoustic instruments and storytelling about life, love, and work.",
+    "relevantArtist": "Zezé Di Camargo & Luciano"
+  },
+  {
+    "id": 108,
+    "name": "show-tunes",
+    "genreInfo": "Show tunes are songs written for musical theater productions, often featuring elaborate vocal performances and orchestral accompaniment.",
+    "relevantArtist": "Barbra Streisand"
+  },
+  {
+    "id": 109,
+    "name": "singer-songwriter",
+    "genreInfo": "Singer-songwriter music focuses on the lyrical and musical expression of the artist, typically featuring introspective themes and acoustic instrumentation.",
+    "relevantArtist": "Joni Mitchell"
+  },
+  {
+    "id": 110,
+    "name": "ska",
+    "genreInfo": "Ska is a genre that originated in Jamaica in the late 1950s, blending elements of Caribbean mento and calypso with American jazz and rhythm and blues.",
+    "relevantArtist": "The Specials"
+  },
+  {
+    "id": 111,
+    "name": "sleep",
+    "genreInfo": "Sleep music refers to calming and ambient tracks designed to promote relaxation and help listeners fall asleep, often featuring soft melodies and minimal beats.",
+    "relevantArtist": "Max Richter"
+  },
+  {
+    "id": 112,
+    "name": "songwriter",
+    "genreInfo": "Songwriter music highlights the craft of songwriting, emphasizing lyrical storytelling and personal expression, often performed acoustically.",
+    "relevantArtist": "Leonard Cohen"
+  },
+  {
+    "id": 113,
+    "name": "soul",
+    "genreInfo": "Soul music is a genre that originated in the United States in the 1950s and 1960s, blending elements of gospel, R&B, and jazz, characterized by its emotive vocals and groove.",
+    "relevantArtist": "Aretha Franklin"
+  },
+  {
+    "id": 114,
+    "name": "soundtracks",
+    "genreInfo": "Soundtracks refer to the music composed for films, TV shows, or video games, often instrumental or orchestral, used to enhance the narrative and mood.",
+    "relevantArtist": "John Williams"
+  },
+  {
+    "id": 115,
+    "name": "spanish",
+    "genreInfo": "Spanish music encompasses a wide range of styles from Spain, including flamenco, zarzuela, and modern pop, often featuring guitar and passionate vocals.",
+    "relevantArtist": "Paco de Lucía"
+  },
+  {
+    "id": 116,
+    "name": "study",
+    "genreInfo": "Study music refers to instrumental or ambient tracks that create a calm and focused atmosphere, often used to enhance concentration and productivity.",
+    "relevantArtist": "Lofi Girl"
+  },
+  {
+    "id": 117,
+    "name": "summer",
+    "genreInfo": "Summer music refers to upbeat, feel-good tracks that evoke the carefree spirit of summer, often associated with parties, vacations, and good vibes.",
+    "relevantArtist": "Calvin Harris"
+  },
+  {
+    "id": 118,
+    "name": "swedish",
+    "genreInfo": "Swedish music spans genres from folk to pop, with notable influence on the global music industry, especially in pop production.",
+    "relevantArtist": "ABBA"
+  },
+  {
+    "id": 119,
+    "name": "synth-pop",
+    "genreInfo": "Synth-pop is a genre of music that emerged in the late 1970s, characterized by the use of synthesizers, electronic beats, and catchy melodies.",
+    "relevantArtist": "Depeche Mode"
+  },
+  {
+    "id": 120,
+    "name": "tango",
+    "genreInfo": "Tango is a genre of music and dance that originated in Argentina, characterized by its dramatic and passionate rhythms, often performed with a bandoneon.",
+    "relevantArtist": "Astor Piazzolla"
+  },
+  {
+    "id": 121,
+    "name": "techno",
+    "genreInfo": "Techno is a genre of electronic dance music that emerged in the 1980s, known for its repetitive beats and use of synthesizers, often associated with the underground rave scene.",
+    "relevantArtist": "Carl Cox"
+  },
+  {
+    "id": 122,
+    "name": "trance",
+    "genreInfo": "Trance is a genre of electronic dance music that emerged in the 1990s, characterized by repetitive melodic phrases and a build-up to a peak in intensity.",
+    "relevantArtist": "Armin van Buuren"
+  },
+  {
+    "id": 123,
+    "name": "trip-hop",
+    "genreInfo": "Trip-hop is a subgenre of electronic music that originated in the UK in the early 1990s, blending hip-hop beats with atmospheric sounds and downbeat tempos.",
+    "relevantArtist": "Massive Attack"
+  },
+  {
+    "id": 124,
+    "name": "turkish",
+    "genreInfo": "Turkish music blends traditional Turkish folk melodies with modern influences, including rock, pop, and classical elements, reflecting the country's rich cultural heritage.",
+    "relevantArtist": "Tarkan"
+  },
+  {
+    "id": 125,
+    "name": "work-out",
+    "genreInfo": "Work-out music refers to energetic and motivational tracks designed to keep listeners pumped and moving during exercise routines, often featuring fast beats and uplifting lyrics.",
+    "relevantArtist": "David Guetta"
+  },
+  {
+    "id": 126,
+    "name": "world-music",
+    "genreInfo": "World music is a broad genre that encompasses traditional and contemporary music from cultures around the world, often blending folk instruments with modern production techniques.",
+    "relevantArtist": "Youssou N'Dour"
+  }
+]
