@@ -6,9 +6,22 @@ dotenv.config();
 const clientId = process.env.SPOTIFY_CLIENT_ID;
 const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
 
+let appTokenCache = {
+  accessToken: null,
+  expiresAt: null, // Timestamp when token expires
+};
+
 export const getAppToken = async (req, res) => {
   try {
     const authString = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
+
+    // Check if app token is still valid
+    if (appTokenCache.accessToken && appTokenCache.expiresAt > Date.now()) {
+      return res.status(200).json({
+        access_token: appTokenCache.accessToken,
+        expires_in: (appTokenCache.expiresAt - Date.now()) / 1000,
+      });
+    }
 
     const tokenUrl = 'https://accounts.spotify.com/api/token';
     const data = new URLSearchParams({ grant_type: 'client_credentials' });
@@ -22,17 +35,18 @@ export const getAppToken = async (req, res) => {
 
     const { access_token, expires_in } = response.data;
 
-    // Send token back to the client (use with caution)
+    // Store app token in memory
+    appTokenCache.accessToken = access_token;
+    appTokenCache.expiresAt = Date.now() + expires_in * 1000; // Store the expiration timestamp
+
     res.status(200).json({
       access_token,
       expires_in,
     });
   } catch (error) {
-    console.error(
-      'Error getting app token:',
-      error.response ? error.response.data : error.message
-    );
+    console.error('Error getting app token:', error.response ? error.response.data : error.message);
     res.status(500).json({ error: 'Failed to get app token' });
   }
 };
+
 
