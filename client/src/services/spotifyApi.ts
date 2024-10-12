@@ -11,12 +11,9 @@ export const spotifyApi = createApi({
   }),
   endpoints: (builder) => ({
     getArtisData: builder.query({
-      query: ({id, appToken})=> ({
+      query: ({ id }) => ({
         url: `artists/${id}`,
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${appToken}`,
-        },
       }),
     }),
     getTopArtistLongRange: builder.query({
@@ -25,9 +22,6 @@ export const spotifyApi = createApi({
         {
           url: `me/top/artists?time_range=${timeRange}&limit=${limit}`,
           method: "GET",
-          headers: {
-            Authorization: `Bearer ${appToken}`,
-          },
         }
       ),
     }),
@@ -37,41 +31,43 @@ export const spotifyApi = createApi({
         method: "GET",
       }),
     }),
-    getGenereoftheDay: builder.query({
-      query: ({ appToken }) => ({
-        url: `recommendations/available-genre-seeds`,
+    getGenreOftheDay: builder.query({
+      query: () => ({
+        url: `genre-of-the-day`,
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${appToken}`,
-        },
       }),
     }),
     getSearchSongsbyGenre: builder.query({
-      query: ({ genre, limit, appToken }) => ({
-        url: `search?q=${genre}&type=track&limit=${limit}`,
+      query: () => ({
+        url: `genre-of-the-day`,
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${appToken}`,
-        },
-      }),
-    }),
-
-    getPlaylistByGenre: builder.query({
-      query: ({ genre, limit, appToken }) => ({
-        url: `search?q=${genre}&type=playlist&limit=${limit}`, 
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${appToken}`,
-        },
       }),
     }),
     getPopularArtistPopularSongs: builder.query({
-      query: (artistId)=> ({
-        url: `/popular-artist/songs`,
-        method: "POST",
-        body: artistId
-      })
-    })
+      query: ( artistId ) => (
+        console.log(artistId),
+        {
+          url: `popular-artist/songs`,
+          method: "POST",
+          body: {artistId}
+        }
+      ),
+    }),
+
+    getTopSongsPlaylist: builder.query({
+      query: () => ({
+        url: `search?query=top+global&type=playlist&locale=es-ES%2Ces%3Bq%3D0.9&offset=0&limit=1`,
+        method: "GET",
+      }),
+    }),
+
+    getPlaylistbyId: builder.query({
+      query: ({ id }) => ({
+        url: `playlists/${id}`,
+        method: "GET",
+      }),
+    }),
+
   }),
 });
 
@@ -80,7 +76,8 @@ export const {
   useGetTopArtistLongRangeQuery,
   useGetPopularArtistsQuery,
   useGetPopularArtistPopularSongsQuery,
-  useGetGenereoftheDayQuery,
+  useGetGenreOftheDayQuery,
   useGetSearchSongsbyGenreQuery,
-  useGetPlaylistByGenreQuery,
+  useGetTopSongsPlaylistQuery,
+  useGetPlaylistbyIdQuery,
 } = spotifyApi;

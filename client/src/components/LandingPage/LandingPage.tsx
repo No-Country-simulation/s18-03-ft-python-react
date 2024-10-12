@@ -4,11 +4,16 @@ import { ArrowRightIcon } from "@heroicons/react/24/solid";
 // components
 import MostListened from "./components/MostListened";
 import GenereOfTheDay from "./components/GenereOfTheDay";
+import PopularSongNow from "./components/PopularSongNow";
+import ArtisOfTheDay from "./components/ArtisOfTheDay";
+
+import RecentlyJoined from "./components/RecentlyJoined";
+
 
 export default function LandingPage() {
   const loginRedirect = process.env.NEXT_PUBLIC_AUTHORIZE_LOGIN
   return (
-    <main className="w-[90%] mx-auto max-w-[1250px]">
+    <main className="w-[90%] mx-auto max-w-[1250px] h-[100%]">
       <header className="pt-1 flex flex-col gap-[1rem]">
         <h1 className="text-spotify-green font-bold text-[1.6rem] text-center">
           Welcome To Your Music Journey
@@ -30,12 +35,24 @@ export default function LandingPage() {
         <div className='mt-[1rem] flex flex-col justify-center gap-[1rem] md:flex-row md:justify-start w-[100%]'>
         <MostListened/>
         {/* este otro es la cancion del dia */}
-        <MostListened/>
+        <ArtisOfTheDay/>
         </div>
       </section>
 
       <section className="bg-spotify-light-gray mt-[1rem] rounded-lg w-full p-2 md:flex flex flex-col md:flex-row justify-center items-center">
       <GenereOfTheDay/>
+      </section>
+      
+        
+
+      <section>
+        <PopularSongNow/>
+              </section>
+
+      
+      <section className="bg-spotify-light-gray mt-4 mb-4 rounded-lg w-full p-6">
+        <RecentlyJoined/>
+
       </section>
     </main>
   );

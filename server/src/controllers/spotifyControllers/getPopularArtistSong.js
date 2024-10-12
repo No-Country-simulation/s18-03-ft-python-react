@@ -6,8 +6,11 @@ const baseUrl = process.env.SPOTIFY_BASE_URL
 
 export const getPopularArtistSong = async(req,res)=> {
     const {artistId} = req.body
+    console.log('artist id', artistId)
 
-    if(!artistId) res.status(500).send('no artist id provided')
+    if(!artistId) {
+        return res.status(500).send('no artist id provided')
+    }
 
     try {
         const accessToken = await getAppToken()
@@ -22,6 +25,7 @@ export const getPopularArtistSong = async(req,res)=> {
 
         
     } catch (error) {
+        console.log(error)
         res.status(500).json({error: 'error when fetching popular artist songs', errorDetails: error})
     }
 }
