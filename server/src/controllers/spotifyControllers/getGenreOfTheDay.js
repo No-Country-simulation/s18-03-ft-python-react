@@ -1,4 +1,6 @@
 import { getAppToken } from "../authControllers/getAppToken.js";
+import genresJsonInfo from '../../genres.json' assert {type: 'json'}
+
 import axios from 'axios'
 
 const baseUrl = process.env.SPOTIFY_BASE_URL
@@ -28,10 +30,12 @@ export const getGenreOfTheDay = async (req,res)=> {
 
             const genresLength = response.data.genres.length
             const randomGenre = Math.floor(Math.random()* genresLength)
-
-            console.log(genresLength)
+            console.log('random genre', randomGenre)
 
             const genre = response.data.genres[randomGenre]
+
+            const info = genresJsonInfo.find(genre => genre.id === randomGenre)
+            console.log(info)
 
             fullResponse.genreName = genre
             fullResponse.songInfo = await genreSong(appToken, genre)
