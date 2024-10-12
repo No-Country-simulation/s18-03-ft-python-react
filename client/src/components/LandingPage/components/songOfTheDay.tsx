@@ -16,7 +16,7 @@ export default function ArtisOfTheDay() {
   return (
     <section className="md:w-[50%]">
       <h3 className="text-spotify-green text-center text-lg font-bold mb-4">
-        Popular Right Now
+        Song Of The Day
       </h3>
       {TopSong && (
         <>

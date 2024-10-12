@@ -31,7 +31,7 @@ export default function LandingPage() {
       </header>
       
       <section className='mt-[2rem]'>
-        <h2 className='text-center font-semibold text-[1.2rem]'>Highlights</h2>
+        <h2 className='text-center font-semibold text-[1.4rem]'>Popular Today</h2>
         <div className='mt-[1rem] flex flex-col justify-center gap-[1rem] md:flex-row md:justify-start w-[100%]'>
         <MostListened/>
         {/* este otro es la cancion del dia */}
