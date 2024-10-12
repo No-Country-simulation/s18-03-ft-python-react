@@ -16,7 +16,7 @@ export const getGenreOfTheDay = async (req,res)=> {
     const timeDifference = currentTime - startTime
     const fullResponse = {
         genreName: '',
-        songInfo: {},
+        songs: {},
         genreInfo: {}
     }
     
@@ -39,9 +39,9 @@ export const getGenreOfTheDay = async (req,res)=> {
 
             fullResponse.genreName = genre
             fullResponse.genreInfo = info
-            fullResponse.songInfo = await genreSong(appToken, genre)
+            fullResponse.songs = await genreSong(appToken, genre)
 
-        res.status(200).json({response: fullResponse, allGenres: response.data.genres})
+        res.status(200).json(fullResponse)
     } catch (error) {
         res.status(500).json({error: "error when gettinng genre of the day", errorDetails: error})
     }
