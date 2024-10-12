@@ -27,7 +27,7 @@ export default function MostListened() {
   return (
     <article className="">
       <h3 className="text-spotify-green text-center text-lg font-bold mb-4">
-        Popular Right Now
+        Artist Of The Day
       </h3>
       {mostPopularArtist && (
         <>
