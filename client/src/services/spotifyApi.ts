@@ -1,10 +1,13 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { url } from "inspector";
+
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL
+
 
 export const spotifyApi = createApi({
   reducerPath: "spotifyApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://api.spotify.com/v1/',
+    baseUrl: backendUrl,
+    credentials: 'include'
   }),
   endpoints: (builder) => ({
     getArtisData: builder.query({
@@ -29,12 +32,9 @@ export const spotifyApi = createApi({
       ),
     }),
     getPopularArtists: builder.query({
-      query: ({ limit, appToken }) => ({
-        url: `search?q=artist&type=artist&limit=${limit}`,
+      query: () => ({
+        url: `any-popular-artist`,
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${appToken}`,
-        },
       }),
     }),
     getGenereoftheDay: builder.query({
@@ -66,12 +66,10 @@ export const spotifyApi = createApi({
       }),
     }),
     getPopularArtistPopularSongs: builder.query({
-      query: ({artistId, appToken})=> (console.log(artistId),{
-        url: `artists/${artistId}/top-tracks`,
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${appToken}`
-        }
+      query: (artistId)=> ({
+        url: `/popular-artist/songs`,
+        method: "POST",
+        body: artistId
       })
     })
   }),

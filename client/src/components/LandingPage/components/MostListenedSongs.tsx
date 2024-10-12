@@ -7,13 +7,11 @@ import { useGetPopularArtistPopularSongsQuery } from "@/services/spotifyApi";
 
 interface Props {
   artistId: string;
-  appToken: string;
 }
 
-export default function MostListenedSongs({ artistId, appToken }: Props) {
+export default function MostListenedSongs({ artistId}: Props) {
   const { data, error, isLoading } = useGetPopularArtistPopularSongsQuery({
     artistId,
-    appToken,
   });
   const songs = data?.tracks?.slice(0, 5); // Limit to 5 songs
 

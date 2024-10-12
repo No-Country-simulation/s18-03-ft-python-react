@@ -3,9 +3,10 @@ import express from 'express'
 import crypto from 'crypto';
 import querystring from 'querystring';
 
-import { getAppToken } from '../controllers/authControllers/getAppToken.js'
 import { getUserToken } from '../controllers/authControllers/getUserToken.js'
 import { getUserInfo } from '../controllers/userControllers/getUserInfo.js';
+import { getPopularArtist } from '../controllers/spotifyControllers/getAPopularArtist.js';
+import { getPopularArtistSong } from '../controllers/spotifyControllers/getPopularArtistSong.js';
 
 const clientId = process.env.SPOTIFY_CLIENT_ID;
 const redirectUri = process.env.SPOTIFY_REDIRECT_URI; 
@@ -35,6 +36,7 @@ routes.get('/callback', getUserToken)
 
 routes.get('/userInfo', getUserInfo)
 
-routes.get('/app-token', getAppToken)
-
+// spotify req
+routes.get('/any-popular-artist', getPopularArtist)
+routes.post('/popular-artist/songs', getPopularArtistSong)
 export default routes

@@ -1,5 +1,4 @@
 import React from "react";
-import { useAppSelector } from "@/redux/hooks";
 import { useGetPopularArtistsQuery } from "@/services/spotifyApi";
 import MostListenedSongs from "./MostListenedSongs";
 
@@ -7,13 +6,9 @@ import Image from "next/image";
 import { Artist } from "@/types";
 
 export default function MostListened() {
-  const appToken = useAppSelector((state) => state.userReducer.appToken?.token);
 
   // Fetch popular artists from Spotify API
-  const { data, error, isLoading } = useGetPopularArtistsQuery({
-    limit: 50,
-    appToken,
-  });
+  const { data, error, isLoading } = useGetPopularArtistsQuery({})
 
   // Get the list of artists from the API response
   const artistList = data?.artists?.items;
@@ -57,9 +52,7 @@ export default function MostListened() {
             </div>
           </div>
 
-          {appToken && (
-            <MostListenedSongs artistId={mostPopularArtist?.id} appToken={appToken}/>
-          )}
+            <MostListenedSongs artistId={mostPopularArtist?.id}/>
           
 
         </>

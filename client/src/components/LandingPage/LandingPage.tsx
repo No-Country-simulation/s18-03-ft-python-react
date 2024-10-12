@@ -1,16 +1,12 @@
 "use client";
 import React from "react";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
-import useRefreshAppToken from "@/hooks/refreshAppToken";
 // components
 import MostListened from "./components/MostListened";
 import GenereOfTheDay from "./components/GenereOfTheDay";
 
 export default function LandingPage() {
-  const { appToken } = useRefreshAppToken();
   const loginRedirect = process.env.NEXT_PUBLIC_AUTHORIZE_LOGIN
-  console.log(appToken);
-
   return (
     <main className="w-[90%] mx-auto max-w-[1250px]">
       <header className="pt-1 flex flex-col gap-[1rem]">
