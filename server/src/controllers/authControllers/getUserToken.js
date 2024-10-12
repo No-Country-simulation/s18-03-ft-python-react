@@ -54,6 +54,8 @@ export const getUserToken = async (req, res) => {
           expiresAt: Date.now() + expires_in * 1000,
         }
 
+        console.log(req.session.user?.expiresAt)
+
         res.redirect(spotifyUriWithToken)
       } catch (error) {
         console.log('Error exchanging code for tokens:', error)

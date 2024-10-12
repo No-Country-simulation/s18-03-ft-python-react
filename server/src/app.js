@@ -4,6 +4,7 @@ import routes from './routes/index.js'
 import dotenv from 'dotenv'
 import session from 'express-session'
 import cookieParser from 'cookie-parser'
+import cors from 'cors'
 
 dotenv.config()
 
@@ -13,6 +14,15 @@ const app = express()
 // Middlewares
 app.use(express.json())
 app.use(cookieParser())
+
+// Configure CORS
+app.use(
+  cors({
+    origin: '*', 
+    credentials: true, 
+  })
+);
+
 
 app.use(
     session({
