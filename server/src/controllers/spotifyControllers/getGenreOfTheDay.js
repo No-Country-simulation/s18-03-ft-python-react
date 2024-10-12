@@ -34,10 +34,11 @@ export const getGenreOfTheDay = async (req,res)=> {
 
             const genre = response.data.genres[randomGenre]
 
-            const info = genresJsonInfo.find(genre => genre.id === randomGenre)
+            const info = binarySearch(genresJsonInfo, randomGenre)
             console.log(info)
 
             fullResponse.genreName = genre
+            fullResponse.genreInfo = info
             fullResponse.songInfo = await genreSong(appToken, genre)
 
         res.status(200).json({response: fullResponse, allGenres: response.data.genres})
@@ -70,4 +71,27 @@ const genreSong = async(appToken, genre)=> {
         return {error: 'error when getting genreSong', errorDetails: error}
     }
 
+}
+
+function binarySearch(arr,target){
+    let low = 0
+    let high = arr.length -1
+
+    while(low <= high){
+        let mid = Math.floor((low + high)/2)
+
+        if(arr[mid].id === target){
+            return arr[mid]
+        } else  if (arr[mid].id < target){
+            low = mid + 1
+        } else {
+            high = mid -1
+        }
+    }
+
+    return {
+        "id": -500,
+        "name": "Unfound",
+        "genreInfo": "if you see unfound, please contact with the developer team"
+      }
 }
