@@ -5,7 +5,7 @@ import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import MostListened from "./components/MostListened";
 import GenereOfTheDay from "./components/GenereOfTheDay";
 import PopularSongNow from "./components/PopularSongNow";
-import ArtisOfTheDay from "./components/ArtisOfTheDay";
+import ArtisOfTheDay from "./components/songOfTheDay";
 
 import RecentlyJoined from "./components/RecentlyJoined";
 

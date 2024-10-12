@@ -67,6 +67,12 @@ export const spotifyApi = createApi({
         method: "GET",
       }),
     }),
+    getSongOfTheDay: builder.query({
+      query: ()=> ({
+        url: 'song-of-the-day',
+        method: "GET"
+      })
+    })
 
   }),
 });
@@ -80,4 +86,5 @@ export const {
   useGetSearchSongsbyGenreQuery,
   useGetTopSongsPlaylistQuery,
   useGetPlaylistbyIdQuery,
+  useGetSongOfTheDayQuery
 } = spotifyApi;

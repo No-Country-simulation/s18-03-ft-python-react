@@ -9,6 +9,7 @@ import { getPopularArtist } from '../controllers/spotifyControllers/getAPopularA
 import { getPopularArtistSong } from '../controllers/spotifyControllers/getPopularArtistSong.js';
 import { getGenreOfTheDay } from '../controllers/spotifyControllers/getGenreOfTheDay.js';
 import { topGlobalSongs } from '../controllers/spotifyControllers/getTopGlobalSongs.js';
+import { getSongOfTheDay } from '../controllers/spotifyControllers/getSongOfTheDay.js';
 
 const clientId = process.env.SPOTIFY_CLIENT_ID;
 const redirectUri = process.env.SPOTIFY_REDIRECT_URI; 
@@ -47,5 +48,8 @@ routes.get('/genre-of-the-day', getGenreOfTheDay)
 
 //global top songs
 routes.get('/top-global-songs', topGlobalSongs)
+
+//song of the day
+routes.get('/song-of-the-day', getSongOfTheDay)
 
 export default routes
