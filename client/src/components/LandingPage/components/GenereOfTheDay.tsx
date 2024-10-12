@@ -1,4 +1,3 @@
-import { useAppSelector } from "@/redux/hooks";
 import {
   useGetGenereoftheDayQuery,
   useGetPlaylistByGenreQuery,
@@ -11,10 +10,8 @@ import React from "react";
 import { Song } from "@/types";
 
 const GenereOfTheDay = () => {
-  const appToken = useAppSelector((state) => state.userReducer.appToken?.token);
 
   const { data, error, isLoading } = useGetGenereoftheDayQuery({
-    appToken,
   });
 
   const genreOfTheDay = data?.genres[0];
@@ -22,13 +19,11 @@ const GenereOfTheDay = () => {
   const { data: songsData } = useGetSearchSongsbyGenreQuery({
     genre: genreOfTheDay,
     limit: 5,
-    appToken,
   });
 
   const { data: playlistData } = useGetPlaylistByGenreQuery({
     genre: genreOfTheDay,
     limit: 1,
-    appToken,
   });
 
   console.log("playlistData", playlistData);
