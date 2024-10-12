@@ -56,7 +56,7 @@ export const spotifyApi = createApi({
 
     getTopSongsPlaylist: builder.query({
       query: () => ({
-        url: `search?query=top+global&type=playlist&locale=es-ES%2Ces%3Bq%3D0.9&offset=0&limit=1`,
+        url: `top-global-songs`,
         method: "GET",
       }),
     }),
