@@ -1,28 +1,21 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL
+
 export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: '',
+    baseUrl: backendUrl,
+    credentials: 'include',
   }),
   endpoints: (builder) => ({
     getAccessToken: builder.mutation({
-      query: (body) => ({
-        url: 'https://accounts.spotify.com/api/token',
-        method: 'POST',
-        body: body,
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        }
+      query: () => ({
+        url: 'app-token',
+        method: 'GET',
       }),
     }),
-    getCallback: builder.mutation({
-      query: ()=> ({
-        url: 'http://localhost3001/infinify/login',
-        method: "GET"
-      })
-    })
   }),
 });
 
-export const { useGetAccessTokenMutation, useGetCallbackMutation } = authApi
+export const { useGetAccessTokenMutation } = authApi

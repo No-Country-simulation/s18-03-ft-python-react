@@ -20,14 +20,12 @@ export const getAppToken = async (req, res) => {
       },
     });
 
-    const { access_token, token_type, expires_in } = response.data;
+    const { access_token, expires_in } = response.data;
 
-
-    // Send the token back to the client (use with caution)
+    // Send token back to the client (use with caution)
     res.status(200).json({
-      accessToken: access_token,
-      tokenType: token_type,
-      expiresIn: expires_in,
+      access_token,
+      expires_in,
     });
   } catch (error) {
     console.error(
@@ -37,3 +35,4 @@ export const getAppToken = async (req, res) => {
     res.status(500).json({ error: 'Failed to get app token' });
   }
 };
+

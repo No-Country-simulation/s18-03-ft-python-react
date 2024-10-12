@@ -6,9 +6,6 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { useGetAccessTokenMutation } from '@/services/authApi';
 import { setToken } from '@/slices/userSlice';
 
-const apiSecret = process.env.NEXT_PUBLIC_CLIENT_SECRET;
-const clientId = process.env.NEXT_PUBLIC_CLIENT_ID;
-
 export default function useRefreshAppToken() {
     const [getAccessToken] = useGetAccessTokenMutation()
     const dispatch = useAppDispatch()
@@ -16,7 +13,7 @@ export default function useRefreshAppToken() {
 
     const onRefreshToken = async ()=> {
         try {
-            const response = await getAccessToken(`grant_type=client_credentials&client_id=${clientId}&client_secret=${apiSecret}`).unwrap()
+            const response = await getAccessToken({}).unwrap()
             const token = response.access_token;
             const expirationTime = Date.now() + response.expires_in * 1000
 
