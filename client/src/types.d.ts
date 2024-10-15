@@ -16,10 +16,13 @@ export interface Artist {
 }
 
 export interface Song {
-  id: string;
   name: string;
+  id: string;
+  songName: string;
+  albumName: string;
   album: SongAlbum;
-  artists: Artist[];
+  albumImageUrl: string;
+  artists: string;
   popularity: number;
   external_urls: {
     spotify: string;

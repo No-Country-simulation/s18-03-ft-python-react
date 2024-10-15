@@ -7,15 +7,13 @@ import { useGetPopularArtistPopularSongsQuery } from "@/services/spotifyApi";
 
 interface Props {
   artistId: string;
-  appToken: string;
 }
 
-export default function MostListenedSongs({ artistId, appToken }: Props) {
-  const { data, error, isLoading } = useGetPopularArtistPopularSongsQuery({
-    artistId,
-    appToken,
-  });
+export default function MostListenedSongs({artistId}: Props) {
+  console.log(artistId)
+  const { data, error, isLoading } = useGetPopularArtistPopularSongsQuery(artistId);
   const songs = data?.tracks?.slice(0, 5); // Limit to 5 songs
+  console.log('songs', songs)
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error loading songs.</p>;

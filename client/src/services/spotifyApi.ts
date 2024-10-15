@@ -1,18 +1,19 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL
+
+
 export const spotifyApi = createApi({
   reducerPath: "spotifyApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://api.spotify.com/v1/",
+    baseUrl: backendUrl,
+    credentials: 'include'
   }),
   endpoints: (builder) => ({
     getArtisData: builder.query({
-      query: ({ id, appToken }) => ({
+      query: ({ id }) => ({
         url: `artists/${id}`,
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${appToken}`,
-        },
       }),
     }),
     getTopArtistLongRange: builder.query({
@@ -21,81 +22,57 @@ export const spotifyApi = createApi({
         {
           url: `me/top/artists?time_range=${timeRange}&limit=${limit}`,
           method: "GET",
-          headers: {
-            Authorization: `Bearer ${appToken}`,
-          },
         }
       ),
     }),
     getPopularArtists: builder.query({
-      query: ({ limit, appToken }) => ({
-        url: `search?q=artist&type=artist&limit=${limit}`,
+      query: () => ({
+        url: `any-popular-artist`,
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${appToken}`,
-        },
       }),
     }),
-    getGenereoftheDay: builder.query({
-      query: ({ appToken }) => ({
-        url: `recommendations/available-genre-seeds`,
+    getGenreOftheDay: builder.query({
+      query: () => ({
+        url: `genre-of-the-day`,
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${appToken}`,
-        },
       }),
     }),
     getSearchSongsbyGenre: builder.query({
-      query: ({ genre, limit, appToken }) => ({
-        url: `search?q=${genre}&type=track&limit=${limit}`,
+      query: () => ({
+        url: `genre-of-the-day`,
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${appToken}`,
-        },
-      }),
-    }),
-
-    getPlaylistByGenre: builder.query({
-      query: ({ genre, limit, appToken }) => ({
-        url: `search?q=${genre}&type=playlist&limit=${limit}`,
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${appToken}`,
-        },
       }),
     }),
     getPopularArtistPopularSongs: builder.query({
-      query: ({ artistId, appToken }) => (
+      query: ( artistId ) => (
         console.log(artistId),
         {
-          url: `artists/${artistId}/top-tracks`,
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${appToken}`,
-          },
+          url: `popular-artist/songs`,
+          method: "POST",
+          body: {artistId}
         }
       ),
     }),
 
     getTopSongsPlaylist: builder.query({
-      query: ({ appToken }) => ({
-        url: `search?query=top+global&type=playlist&locale=es-ES%2Ces%3Bq%3D0.9&offset=0&limit=1`,
+      query: () => ({
+        url: `top-global-songs`,
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${appToken}`,
-        },
       }),
     }),
 
     getPlaylistbyId: builder.query({
-      query: ({ id, appToken }) => ({
+      query: ({ id }) => ({
         url: `playlists/${id}`,
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${appToken}`,
-        },
       }),
     }),
+    getSongOfTheDay: builder.query({
+      query: ()=> ({
+        url: 'song-of-the-day',
+        method: "GET"
+      })
+    })
 
   }),
 });
@@ -105,9 +82,9 @@ export const {
   useGetTopArtistLongRangeQuery,
   useGetPopularArtistsQuery,
   useGetPopularArtistPopularSongsQuery,
-  useGetGenereoftheDayQuery,
+  useGetGenreOftheDayQuery,
   useGetSearchSongsbyGenreQuery,
-  useGetPlaylistByGenreQuery,
   useGetTopSongsPlaylistQuery,
   useGetPlaylistbyIdQuery,
+  useGetSongOfTheDayQuery
 } = spotifyApi;
