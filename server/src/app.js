@@ -23,20 +23,6 @@ app.use(
   })
 );
 
-
-app.use(
-    session({
-      secret: process.env.SESSION_SECRET || 'your_session_secret',
-      resave: false,
-      saveUninitialized: false,
-      cookie: {
-        secure: process.env.NODE_ENV === 'production', // Use true in production with HTTPS
-        httpOnly: true,
-        maxAge: 3600000, // 1 hour
-      },
-    })
-  );
-
 // Configurar rutas
 app.use('/infinify', routes)
 
