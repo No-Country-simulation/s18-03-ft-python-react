@@ -2,8 +2,8 @@
 import express from 'express'
 import routes from './routes/index.js'
 import dotenv from 'dotenv'
-import session from 'express-session'
 import cookieParser from 'cookie-parser'
+import session from 'express-session'
 import cors from 'cors'
 
 dotenv.config()
@@ -20,6 +20,19 @@ app.use(
   cors({
     origin: 'http://localhost:3000', 
     credentials: true, 
+  })
+);
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || 'your-secret-key', // Use a strong secret
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: false, // Set to true if using HTTPS
+      httpOnly: true,
+      maxAge: 24 * 60 * 60 * 1000, // Session expires after 1 day
+    },
   })
 );
 

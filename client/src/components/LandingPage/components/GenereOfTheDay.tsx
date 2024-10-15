@@ -9,8 +9,7 @@ import { Song } from "@/types";
 
 const GenereOfTheDay = () => {
 
-  const { data, error, isLoading } = useGetGenreOftheDayQuery({
-  });
+  const { data, error, isLoading } = useGetGenreOftheDayQuery({});
 
   if (isLoading) {
     return <div>Loading...</div>;
