@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 
 export const getUserInfo = async (req, res) => {
     const { access_token, refresh_token, expires_in, token_timestamp } = req.session;
@@ -9,10 +11,18 @@ export const getUserInfo = async (req, res) => {
       return res.status(401).json({ message: 'No access token found in session' });
     }
   
-    res.status(200).json({
-      access_token,
-      refresh_token,
-      expires_in,
-      token_timestamp,
-    });
-  };
+    try {
+      const response = await axios.get('https://api.spotify.com/v1/me',{
+        headers: {
+          Authorization: `Bearer ${access_token}`
+        }
+      })
+  
+      res.status(200).json(response.data)
+      
+    } catch (error) {
+      console.log(error)
+      res.status(500).json({error: "error when getting users info", errorDetails: error})
+    }
+};
+
