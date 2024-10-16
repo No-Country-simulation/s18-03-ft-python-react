@@ -15,7 +15,7 @@ import { getNewUsertoken } from '../controllers/authControllers/getNewUserToken.
 
 const clientId = process.env.SPOTIFY_CLIENT_ID;
 const redirectUri = process.env.SPOTIFY_REDIRECT_URI; 
-const scopes = 'user-read-private user-read-email'; // Adjust scopes as needed
+const scopes = 'user-read-private user-read-email user-top-read user-read-playback-state'; // Adjust scopes as needed
 const stateKey = 'spotify_auth_state'
 
 const routes = express.Router()
