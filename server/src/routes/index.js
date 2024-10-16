@@ -11,6 +11,7 @@ import { topGlobalSongs } from '../controllers/spotifyControllers/getTopGlobalSo
 import { getSongOfTheDay } from '../controllers/spotifyControllers/getSongOfTheDay.js';
 
 import { getUserInfo } from '../controllers/userControllers/getUserInfo.js';
+import { getNewUsertoken } from '../controllers/authControllers/getNewUserToken.js';
 
 const clientId = process.env.SPOTIFY_CLIENT_ID;
 const redirectUri = process.env.SPOTIFY_REDIRECT_URI; 
@@ -53,5 +54,6 @@ routes.get('/song-of-the-day', getSongOfTheDay)
 
 // users profile info
 routes.get('/get-profile', getUserInfo)
+routes.get('/get-user-refresh-token', getNewUsertoken)
 
 export default routes
