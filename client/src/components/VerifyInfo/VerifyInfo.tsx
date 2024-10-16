@@ -14,6 +14,8 @@ export default function VerifyInfo() {
     return <>error</>
   }
 
+  console.log(error)
+
     return (
       <div className='bg-spotify-black'>
         <h3>hey</h3>
