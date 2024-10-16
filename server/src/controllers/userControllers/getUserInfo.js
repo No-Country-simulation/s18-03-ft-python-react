@@ -24,7 +24,7 @@ export const getUserInfo = async (req, res) => {
       const userSongs = await getTopUserSongsOrTracks(access_token, 'tracks')
       fullResponse.userTopSongs = userSongs
 
-      const userTopArtist = await getTopUserSongsOrTracks(access_token, 'artist')
+      const userTopArtist = await getTopUserSongsOrTracks(access_token, 'artists')
       fullResponse.userTopArtist = userTopArtist
 
       res.status(200).json(fullResponse)
