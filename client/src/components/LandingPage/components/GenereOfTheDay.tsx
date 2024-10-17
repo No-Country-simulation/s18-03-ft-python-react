@@ -32,9 +32,9 @@ const GenereOfTheDay = () => {
             {data?.genreInfo?.name.toUpperCase()}{" "}
           </h2>
         </div>
-        {data?.songs.map((song: Song) => (
+        {data?.songs?.map((song: Song) => (
           <div
-            key={song.id}
+            key={song?.id}
             className="relative  flex flex-col items-start rounded-lg shadow-md mt-6"
           >
             <div className="flex justify-center items-center">
@@ -49,7 +49,7 @@ const GenereOfTheDay = () => {
 
               {/* Overlay Text */}
               <div className="w-72  inset-0 flex flex-col justify-end gap-2 px-4">
-                <p className="text-sm font-sans ">{song.songName}</p>
+                <p className="text-sm font-sans ">{song?.songName}</p>
                 <p className="text-[#63707F] font-sans font-semibold text-sm ">
                   {song?.artists}
                 </p>
