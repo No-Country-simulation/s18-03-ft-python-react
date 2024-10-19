@@ -19,7 +19,20 @@ export const getUserInfo = async (req, res) => {
           Authorization: `Bearer ${access_token}`
         }
       })
-      fullResponse.userData = response.data
+      
+      const userInfo = {
+        country: response?.data.country,
+        display_name: response?.data.display_name,
+        email: response?.data.email,
+        spotify_id: response?.data.id, 
+        followers: response?.data.followers.total, 
+        uri: response?.data.uri, 
+        profile_photo: response?.data.images?.[0]?.url || null, 
+        refresh_token: refresh_token 
+      };
+  
+
+      fullResponse.userData = userInfo
   
       const userSongs = await getTopUserSongsOrTracks(access_token, 'tracks')
       fullResponse.userTopSongs = userSongs
@@ -35,26 +48,43 @@ export const getUserInfo = async (req, res) => {
     }
 };
 
-const getTopUserSongsOrTracks = async (access_token, lastParam)=> {
-
+const getTopUserSongsOrTracks = async (access_token, type) => {
   try {
-
-    const response = await axios.get(`https://api.spotify.com/v1/me/top/${lastParam}`, {
+    const response = await axios.get(`https://api.spotify.com/v1/me/top/${type}`, {
       headers: {
-        Authorization: `Bearer ${access_token}`
+        Authorization: `Bearer ${access_token}`,
+      },
+    });
+
+    const items = response.data.items; 
+    if (items && items.length > 0) {
+      const topItem = items[0]; // Get the first top item
+
+      if (type === 'tracks') {
+       
+        return {
+          song_name: topItem.name,
+          song_id: topItem.id,
+          song_uri: topItem.uri,
+          song_image: topItem.album?.images[0]?.url, 
+          artist_id: topItem.artists[0]?.id, 
+          artist_name: topItem.artists[0]?.name,
+        };
+      } else if (type === 'artists') {
+        return {
+          artist_name: topItem.name,
+          artist_id: topItem.id,
+          artist_uri: topItem.uri,
+          artist_photo: topItem.images[0]?.url, 
+        };
       }
-    })
-
-    return response.data
-
-    
-  } catch (error) {
-    console.error('Error fetching top songs:', error);
-    return {
-      error: 'error when getting user top items',
-      errorDetails: error
     }
+  } catch (error) {
+    console.error('Error fetching top songs or artists:', error);
+    return {
+      error: 'Error when getting user top items',
+      errorDetails: error,
+    };
   }
-
-}
+};
 
