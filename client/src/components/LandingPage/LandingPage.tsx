@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 // components
 import MostListened from "./components/MostListened";
@@ -8,10 +8,18 @@ import PopularSongNow from "./components/PopularSongNow";
 import ArtisOfTheDay from "./components/songOfTheDay";
 
 import RecentlyJoined from "./components/RecentlyJoined";
+import { useAppSelector } from "@/redux/hooks";
 
 
 export default function LandingPage() {
   const loginRedirect = process.env.NEXT_PUBLIC_AUTHORIZE_LOGIN
+
+  const userAuth = useAppSelector((state) => state.userReducer.user);
+
+  useEffect(() => {
+    console.log(userAuth)
+  }, [userAuth])
+
   return (
     <main className="w-[90%] mx-auto max-w-[1250px] h-[100%]">
       <header className="pt-1 flex flex-col gap-[1rem]">

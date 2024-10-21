@@ -49,3 +49,11 @@ export interface Playlist {
   }>;
   track: Song;
 }
+
+export interface UserTopArtistList {
+  items: Artist[];
+  total: number;
+  limit: number;
+  offset: number;
+  href: string;
+}
