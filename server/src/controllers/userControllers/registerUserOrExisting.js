@@ -19,14 +19,15 @@ export const registerUserDb = async (userInfo, userTopSongs, userTopArtist) => {
       song_id: topSongId,
       song_image,
       artist_id: songArtistId,
-      artist_name: songArtistName
+      artist_name: songArtistName,
+      song_uri: topSongUri
     } = userTopSongs;
 
     console.log('User Top Artist:', userTopArtist);
     const {
       artist_name: topArtistName,
       artist_id: topArtistId,
-      song_uri: topArtistUri,
+      artist_uri: topArtistUri,
       artist_photo
     } = userTopArtist;
 
@@ -57,7 +58,7 @@ export const registerUserDb = async (userInfo, userTopSongs, userTopArtist) => {
     }
 
     // Insert top artist
-    const userId = newUser[0].spotify_id;
+    const userId = newUser[0].id;
 
     const { data: insertedTopArtist, error: topArtistError } = await supabase
       .from('user_top_artist')
@@ -67,7 +68,6 @@ export const registerUserDb = async (userInfo, userTopSongs, userTopArtist) => {
           artist_name: topArtistName,
           artist_id: topArtistId,
           artist_photo,
-          song_uri: topArtistUri,
         }
       ]);
 
@@ -89,7 +89,8 @@ export const registerUserDb = async (userInfo, userTopSongs, userTopArtist) => {
           artist_id: songArtistId,
           song_name: topSongName,
           song_id: topSongId,
-          song_image: song_image
+          song_image: song_image,
+          song_uri: topSongUri
         }
       ]);
 

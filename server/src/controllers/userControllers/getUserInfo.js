@@ -38,7 +38,7 @@ export const getUserInfo = async (req, res) => {
     const userExist = await verifyUserExist(userInfo.spotify_id);
 
     if (userExist.success === true) {
-      return userExist.user;
+      res.status(200).json(userExist.user)
     } else {
       const userTopSongs = await getTopUserSongsOrTracks(
         access_token,
@@ -50,12 +50,14 @@ export const getUserInfo = async (req, res) => {
         "artists"
       );
 
-      const newUser = registerUserDb( userInfo, userTopSongs, userTopArtist );
+      const newUser = await registerUserDb( userInfo, userTopSongs, userTopArtist );
 
       if(newUser.success === true){
-        return newUser
+        console.log(newUser)
+        res.status(200).json(newUser)
       } else {
-        return newUser.error
+        console.log(newUser.error)
+        res.status(400).json(newUser.error)
       }
     }
   } catch (error) {
