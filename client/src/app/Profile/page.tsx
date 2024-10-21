@@ -10,7 +10,7 @@ export default function page() {
      <div>
       <UserHeader />
      </div>
-     <div className='mt-8 flex flex-col md:flex-row gap-4 px-10'>
+     <div className='mt-8 mb-10 flex flex-col md:flex-row gap-4 px-10 bg-spotify-dark-gray w-full'>
       <UserTopArtist />
       <UserTopSong />
      </div>

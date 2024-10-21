@@ -57,3 +57,13 @@ export interface UserTopArtistList {
   offset: number;
   href: string;
 }
+
+interface UserTopSongs {
+  items: Song[];
+  total: number;
+  limit: number;
+  offset: number;
+  href: string;
+  next: string | null;
+  previous: string | null;
+}
