@@ -1,4 +1,4 @@
-import { use, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks'
 import { useGetUserProfileInfoQuery } from '@/services/profileApi'
 import { setUser } from '@/slices/userSlice';
@@ -18,7 +18,7 @@ export default function VerifyInfo() {
         dispatch(setUser(data));
         router.push('/')
       }
-    }, [data, dispatch])
+    }, [data, dispatch, router]);
 
 
   console.log("user", authUser)
