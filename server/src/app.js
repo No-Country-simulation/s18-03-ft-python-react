@@ -2,8 +2,8 @@
 import express from 'express'
 import routes from './routes/index.js'
 import dotenv from 'dotenv'
-import session from 'express-session'
 import cookieParser from 'cookie-parser'
+import session from 'express-session'
 import cors from 'cors'
 
 dotenv.config()
@@ -23,19 +23,18 @@ app.use(
   })
 );
 
-
 app.use(
-    session({
-      secret: process.env.SESSION_SECRET || 'your_session_secret',
-      resave: false,
-      saveUninitialized: false,
-      cookie: {
-        secure: process.env.NODE_ENV === 'production', // Use true in production with HTTPS
-        httpOnly: true,
-        maxAge: 3600000, // 1 hour
-      },
-    })
-  );
+  session({
+    secret: process.env.SESSION_SECRET || 'your-secret-key', // Use a strong secret
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: false, // Set to true if using HTTPS
+      httpOnly: true,
+      maxAge: 24 * 60 * 60 * 1000, // Session expires after 1 day
+    },
+  })
+);
 
 // Configurar rutas
 app.use('/infinify', routes)

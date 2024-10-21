@@ -4,16 +4,18 @@ import crypto from 'crypto';
 import querystring from 'querystring';
 
 import { getUserToken } from '../controllers/authControllers/getUserToken.js'
-import { getUserInfo } from '../controllers/userControllers/getUserInfo.js';
 import { getPopularArtist } from '../controllers/spotifyControllers/getAPopularArtist.js';
 import { getPopularArtistSong } from '../controllers/spotifyControllers/getPopularArtistSong.js';
 import { getGenreOfTheDay } from '../controllers/spotifyControllers/getGenreOfTheDay.js';
 import { topGlobalSongs } from '../controllers/spotifyControllers/getTopGlobalSongs.js';
 import { getSongOfTheDay } from '../controllers/spotifyControllers/getSongOfTheDay.js';
 
+import { getUserInfo } from '../controllers/userControllers/getUserInfo.js';
+import { getNewUsertoken } from '../controllers/authControllers/getNewUserToken.js';
+
 const clientId = process.env.SPOTIFY_CLIENT_ID;
 const redirectUri = process.env.SPOTIFY_REDIRECT_URI; 
-const scopes = 'user-read-private user-read-email'; // Adjust scopes as needed
+const scopes = 'user-read-private user-read-email user-top-read user-read-playback-state'; // Adjust scopes as needed
 const stateKey = 'spotify_auth_state'
 
 const routes = express.Router()
@@ -37,8 +39,6 @@ routes.get('/login', (req, res) => {
 
 routes.get('/callback', getUserToken)
 
-routes.get('/userInfo', getUserInfo)
-
 // spotify req
 routes.get('/any-popular-artist', getPopularArtist)
 routes.post('/popular-artist/songs', getPopularArtistSong)
@@ -51,5 +51,9 @@ routes.get('/top-global-songs', topGlobalSongs)
 
 //song of the day
 routes.get('/song-of-the-day', getSongOfTheDay)
+
+// users profile info
+routes.get('/get-profile', getUserInfo)
+routes.get('/get-user-refresh-token', getNewUsertoken)
 
 export default routes
