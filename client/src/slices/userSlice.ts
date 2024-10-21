@@ -25,6 +25,7 @@ const userSlice = createSlice({
   reducers: {
     setUser: (state, action: PayloadAction<User>) => {
       state.user = action.payload;
+      localStorage.setItem("user", JSON.stringify(action.payload));
     },
     setToken: (state, action: PayloadAction<{token: string, expiration: number}>) => {
       state.appToken = action.payload;

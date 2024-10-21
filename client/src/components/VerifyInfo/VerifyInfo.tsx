@@ -1,9 +1,29 @@
+import { use, useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks'
 import { useGetUserProfileInfoQuery } from '@/services/profileApi'
+import { setUser } from '@/slices/userSlice';
+import { useRouter } from 'next/navigation';
 
 export default function VerifyInfo() {
   const { data, isLoading, error } = useGetUserProfileInfoQuery({}) 
 
-  console.log(data)
+  const authUser = useAppSelector((state) => state.userReducer.user);
+  const dispatch = useAppDispatch();
+  const router = useRouter()
+
+  console.log(data?.userData)
+
+    useEffect(() => {
+      if (data) {
+        dispatch(setUser(data));
+        router.push('/')
+      }
+    }, [data, dispatch])
+
+
+  console.log("user", authUser)
+
+  
   console.log("HEEEY")
 
   if(isLoading){
