@@ -2,9 +2,10 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaSpotify } from "react-icons/fa";
+import { User } from "@/slices/userSlice";
 
 const UserHeader = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");

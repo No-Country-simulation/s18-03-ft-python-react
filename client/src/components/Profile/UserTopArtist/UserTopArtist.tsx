@@ -1,9 +1,10 @@
-import { Artist } from "@/types";
+
+import {  UserTopArtistList } from "@/types";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const UserTopArtist = () => {
-  const [topArtist, setTopArtist] = useState(null);
+  const [topArtist, setTopArtist] = useState<UserTopArtistList | null>(null);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");

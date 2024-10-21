@@ -1,11 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 // Define the User interface
-interface User {
+export interface User {
   id: string;
   username: string;
   email: string;
   role: string;
+  display_name: string;
+  images: Array<{ url: string }>;
+  followers: { total: number };
+  external_urls: { spotify: string };
 }
 
 // Define the UserState interface
