@@ -38,7 +38,7 @@ export const getUserInfo = async (req, res) => {
     const userExist = await verifyUserExist(userInfo.spotify_id);
 
     if (userExist.success === true) {
-      res.status(200).json(userExist.user)
+      res.status(200).json(userExist)
     } else {
       const userTopSongs = await getTopUserSongsOrTracks(
         access_token,

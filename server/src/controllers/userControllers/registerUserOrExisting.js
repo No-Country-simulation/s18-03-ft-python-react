@@ -106,7 +106,9 @@ export const registerUserDb = async (userInfo, userTopSongs, userTopArtist) => {
     console.log('user created succesfully and returned')
     return {
       success: true,
-      ...newUser[0],
+      user: {
+        ...newUser[0]
+      },
       user_top_artist: {
         artist_name: topArtistName,
         artist_id: topArtistId,
@@ -133,32 +135,39 @@ export const registerUserDb = async (userInfo, userTopSongs, userTopArtist) => {
 
 
 export const verifyUserExist = async (spotify_id) => {
-  // Check if user already exists
   const { data: existingUserWithDetails, error: selectError } = await supabase
-  .from('user')
-  .select(`*, user_top_artist (*), user_top_songs (*)`)
-  .eq('spotify_id', spotify_id);
+    .from('user')
+    .select(`*, user_top_artist (*), user_top_songs (*)`)
+    .eq('spotify_id', spotify_id);
 
-if (selectError) {
-  console.error('Error when getting user from the database:', selectError);
-  return {
-    success: false,
-    message: 'Error when getting user from the database'
-  };
-}
+  if (selectError) {
+    console.error('Error when getting user from the database:', selectError);
+    return {
+      success: false,
+      message: 'Error when getting user from the database',
+    };
+  }
 
-if (existingUserWithDetails && existingUserWithDetails.length > 0) {
-  console.log('User found and data retrieved');
-  return {
-    success: true,
-    user: existingUserWithDetails[0]
-  };
-} else {
-    console.log('user not found at the database, returning sucess: false')
-   return{
-    success: false,
-    message: 'user not found'
-   } 
-}
+  if (existingUserWithDetails && existingUserWithDetails.length > 0) {
+    console.log('User found and data retrieved');
 
-}
+    const user = existingUserWithDetails[0];
+    const { user_top_artist, user_top_songs, ...userData } = user;
+
+    const topArtistData = user_top_artist[0];
+    const topSongData = user_top_songs[0];
+
+    return {
+      success: true,
+      user: userData,
+      user_top_artist: topArtistData,
+      user_top_songs: topSongData,
+    };
+  } else {
+    console.log('User not found in the database, returning success: false');
+    return {
+      success: false,
+      message: 'User not found',
+    };
+  }
+};
