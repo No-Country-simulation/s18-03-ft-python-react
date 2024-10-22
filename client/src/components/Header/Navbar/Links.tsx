@@ -1,4 +1,4 @@
-import { FaHome, FaEnvelope, FaSignInAlt, FaUser } from 'react-icons/fa'; 
+import { FaHome, FaEnvelope } from 'react-icons/fa'; 
 
 interface Link {
   id: number;
