@@ -33,95 +33,85 @@ export const registerUserDb = async (userInfo, userTopSongs, userTopArtist) => {
 
 
     // Insert new user
-    const { data: newUser, error: newUserError } = await supabase
-      .from('user')
-      .insert([
-        {
-          country,
-          display_name,
-          email,
-          spotify_id,
-          followers,
-          uri,
-          profile_photo,
-          refresh_token,
-        }
-      ])
-      .select();
+    // const { data: newUser, error: newUserError } = await supabase
+    //   .from('user')
+    //   .insert([
+    //     {
+    //       country,
+    //       display_name,
+    //       email,
+    //       spotify_id,
+    //       followers,
+    //       uri,
+    //       profile_photo,
+    //       refresh_token,
+    //     }
+    //   ])
+    //   .select();
 
-    if (newUserError) {
-      console.error('Error when inserting new user:', newUserError);
-      return {
-        success: false,
-        error: 'Error when inserting new user'
-      };
-    }
+    // if (newUserError) {
+    //   console.error('Error when inserting new user:', newUserError);
+    //   return {
+    //     success: false,
+    //     error: 'Error when inserting new user'
+    //   };
+    // }
 
-    // Insert top artist
-    const userId = newUser[0].id;
+    // // Insert top artist
+    // const userId = newUser[0].id;
 
-    const { data: insertedTopArtist, error: topArtistError } = await supabase
-      .from('user_top_artist')
-      .insert([
-        {
-          user_id: userId,
-          artist_name: topArtistName,
-          artist_id: topArtistId,
-          artist_photo,
-        }
-      ]);
+    // const { data: insertedTopArtist, error: topArtistError } = await supabase
+    //   .from('user_top_artist')
+    //   .insert([
+    //     {
+    //       user_id: userId,
+    //       artist_name: topArtistName,
+    //       artist_id: topArtistId,
+    //       artist_photo,
+    //     }
+    //   ]);
 
-    if (topArtistError) {
-      console.error('Error inserting top artist:', topArtistError);
-      return {
-        success: false,
-        error: 'Error inserting top artist',
-      };
-    }
+    // if (topArtistError) {
+    //   console.error('Error inserting top artist:', topArtistError);
+    //   return {
+    //     success: false,
+    //     error: 'Error inserting top artist',
+    //   };
+    // }
 
-    // Insert top songs
-    const { data: insertedTopSongs, error: topSongsError } = await supabase
-      .from('user_top_songs')
-      .insert([
-        {
-          user_id: userId,
-          artist_name: songArtistName,
-          artist_id: songArtistId,
-          song_name: topSongName,
-          song_id: topSongId,
-          song_image: song_image,
-          song_uri: topSongUri
-        }
-      ]);
+    // // Insert top songs
+    // const { data: insertedTopSongs, error: topSongsError } = await supabase
+    //   .from('user_top_songs')
+    //   .insert([
+    //     {
+    //       user_id: userId,
+    //       artist_name: songArtistName,
+    //       artist_id: songArtistId,
+    //       song_name: topSongName,
+    //       song_id: topSongId,
+    //       song_image: song_image,
+    //       song_uri: topSongUri
+    //     }
+    //   ]);
 
-    if (topSongsError) {
-      console.error('Error inserting top songs:', topSongsError);
-      return {
-        success: false,
-        error: 'Error when inserting top songs'
-      };
-    }
+    // if (topSongsError) {
+    //   console.error('Error inserting top songs:', topSongsError);
+    //   return {
+    //     success: false,
+    //     error: 'Error when inserting top songs'
+    //   };
+    // }
 
 
-    console.log('user created succesfully and returned')
+    // console.log('user created succesfully and returned')
     return {
       success: true,
       user: {
-        ...newUser[0]
+        // ...newUser[0]
+       ...userInfo
       },
-      user_top_artist: {
-        artist_name: topArtistName,
-        artist_id: topArtistId,
-        artist_photo,
-        song_uri: topArtistUri,
-      },
-      user_top_songs: {
-        artist_name: songArtistName,
-        artist_id: songArtistId,
-        song_name: topSongName,
-        song_id: topSongId,
-        song_image: song_image
-      }
+      userTopArtist,
+      userTopSongs
     };
 
   } catch (error) {
