@@ -10,7 +10,7 @@ const UserTopArtist = () => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
       const parsedUser = JSON.parse(storedUser);
-      setTopArtist(parsedUser.userTopArtist);
+      setTopArtist(parsedUser?.user_top_artist);
     }
   }, []);
 

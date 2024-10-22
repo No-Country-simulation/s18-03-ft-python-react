@@ -1,4 +1,6 @@
-import { HomeIcon,ChatBubbleBottomCenterIcon, UserIcon, UsersIcon } from "@heroicons/react/24/outline";
+
+import { HomeIcon, ChatBubbleBottomCenterIcon, UsersIcon } from "@heroicons/react/24/outline";
+
 
 interface Link {
   id: number;
@@ -25,11 +27,5 @@ export const links: Link[] = [
     name: "Connect",
     url: "/connect",
     icon: <UsersIcon className="h-5 w-5" />,
-  },
-  {
-    id: 4, 
-    name: "Profile",
-    url: "/Profile",
-    icon: <UserIcon className="h-5 w-5" />,
   },
 ];
