@@ -10,6 +10,7 @@ export interface User {
   images: Array<{ url: string }>;
   followers: { total: number };
   external_urls: { spotify: string };
+  profile_photo : string;
 }
 
 // Define the UserState interface

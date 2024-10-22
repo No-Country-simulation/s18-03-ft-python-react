@@ -10,8 +10,11 @@ const UserTopSong = () => {
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
-      const parsedUser = JSON.parse(storedUser);
-      setTopSong(parsedUser?.userTopSongs);
+      const parsedUser = JSON.parse(storedUser); 
+      console.log("parsedUser", parsedUser);
+      console.log("top_songs", parsedUser?.user_top_songs);
+
+      setTopSong(parsedUser?.user_top_songs);
     }
   }, []);
 

@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { links } from "./Links";
 import Link from "next/link";
+import { User } from "@/slices/userSlice";
+import Image from "next/image";
 
 const Navbar = () => {
+
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      const parsedUser = JSON.parse(storedUser);
+      setUser(parsedUser?.user);
+    }
+  }, []);
+
+
   return (
     <div className="lex justify-between items-center px-6 relative">
       <nav className=" px-6 py-3 text-white">
@@ -16,6 +30,20 @@ const Navbar = () => {
               {name}
             </Link>
           ))}
+           {user && (
+          <Link
+            href={`Profile`}
+            className="flex flex-col items-center hover:text-primary"
+          > 
+            <Image 
+            src={user.profile_photo}
+            width={40}
+            height={30}
+            className="rounded-full object-fill border-1 border-white"
+            alt={user.display_name}
+            />
+          </Link>
+        )}
         </div>
       </nav>
 
@@ -24,11 +52,27 @@ const Navbar = () => {
           <Link
             href={url}
             key={id}
-            className="flex flex-col items-center hover:text-primary"
+            className="flex items-center justify-center hover:text-primary"
           >
-            <span className="inline-block text-xl">{icon}</span>
+            <span className="inline-block text-2xl">{icon}</span>
           </Link>
         ))}
+
+        {user && (
+          <Link
+            href={`Profile`}
+            className=" items-center hover:text-primary"
+          > 
+            <Image 
+            src={user.profile_photo}
+            width={40}
+            height={30}
+            className="rounded-full object-fill border-1 border-white"
+            alt={user.display_name}
+            />
+          </Link>
+        )}
+
       </div>
     </div>
   );
