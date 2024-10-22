@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-const supabaseUrl = process.env.SUPERBASE_URL
+const supabaseUrl = process.env.SUPERBASEURL
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY
 
 

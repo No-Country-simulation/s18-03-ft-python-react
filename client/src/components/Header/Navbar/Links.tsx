@@ -19,17 +19,5 @@ export const links: Link[] = [
     name: "Message",
     url: "/Message",
     icon: <FaEnvelope />,
-  },
-  {
-    id: 3,
-    name: "Login",
-    url: "/Login",
-    icon: <FaSignInAlt />,
-  },
-  {
-    id: 4,
-    name: "Profile",
-    url: "/Profile",
-    icon: <FaUser />,
-  },
+  }
 ];
