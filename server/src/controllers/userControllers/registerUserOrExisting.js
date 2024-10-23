@@ -110,8 +110,8 @@ export const registerUserDb = async (userInfo, userTopSongs, userTopArtist) => {
         // ...newUser[0]
        ...userInfo
       },
-      userTopArtist,
-      userTopSongs
+      user_top_artist: userTopArtist,
+      user_top_songs: userTopSongs
     };
 
   } catch (error) {
