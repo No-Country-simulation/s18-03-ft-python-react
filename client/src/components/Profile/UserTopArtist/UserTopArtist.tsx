@@ -1,20 +1,21 @@
 
-import {  UserTopArtistList } from "@/types";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { getUser } from "@/slices/userSlice";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const UserTopArtist = () => {
-  const [topArtist, setTopArtist] = useState<UserTopArtistList | null>(null);
+ 
+  const data = useAppSelector((state) => state.userReducer.user);
+  const dispatch = useAppDispatch();
+  
+  
+
+  const topArtist = data?.user_top_artist;
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      const parsedUser = JSON.parse(storedUser);
-      setTopArtist(parsedUser?.user_top_artist);
-    }
-  }, []);
-
-  
+    dispatch(getUser());
+  }, [dispatch]);
 
   return (
     <div className=" w-[100%] md:w-[50%]">
