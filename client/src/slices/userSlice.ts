@@ -12,12 +12,10 @@ export interface User {
 // Define the UserState interface
 interface UserState {
   user: User | null;
-  appToken: { token: string; expiration: number } | null;
 }
 
 const initialState: UserState = {
   user: null,
-  appToken: null,
 };
 
 const userSlice = createSlice({
@@ -27,12 +25,6 @@ const userSlice = createSlice({
     setUser: (state, action: PayloadAction<User>) => {
       state.user = action.payload;
       localStorage.setItem("user", JSON.stringify(action.payload));
-    },
-    setToken: (
-      state,
-      action: PayloadAction<{ token: string; expiration: number }>
-    ) => {
-      state.appToken = action.payload;
     },
     getUser: (state) => {
       const userDataString = localStorage.getItem("user");
@@ -44,5 +36,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { setUser, setToken, getUser } = userSlice.actions;
+export const { setUser, getUser } = userSlice.actions;
 export default userSlice.reducer;

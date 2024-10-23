@@ -48,12 +48,10 @@ interface UserTopSongs {
 
 export interface Userinfo {
   id: string;
-  username: string;
-  email: string;
-  role: string;
+  country: string;
   display_name: string;
-  images: Array<{ url: string }>;
-  followers: { total: number };
-  external_urls: { spotify: string };
+  email: string;
+  followers: number;
+  uri: string;
   profile_photo: string;
 }
