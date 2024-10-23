@@ -67,3 +67,15 @@ interface UserTopSongs {
   next: string | null;
   previous: string | null;
 }
+
+export interface Userinfo {
+  id: string;
+  username: string;
+  email: string;
+  role: string;
+  display_name: string;
+  images: Array<{ url: string }>;
+  followers: { total: number };
+  external_urls: { spotify: string };
+  profile_photo: string;
+}
