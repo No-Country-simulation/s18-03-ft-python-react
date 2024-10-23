@@ -68,44 +68,41 @@ export const getUserInfo = async (req, res) => {
   }
 };
 
-const getTopUserSongsOrTracks = async (access_token, type) => {
+const getTopUserSongsOrTracks = async (access_token, type, limit = 10) => {
   try {
-    const response = await axios.get(
-      `https://api.spotify.com/v1/me/top/${type}`,
-      {
-        headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
-      }
-    );
+    const response = await axios.get(`https://api.spotify.com/v1/me/top/${type}`, {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+      params: {
+        limit, // Add the limit parameter to the request
+      },
+    });
 
     const items = response.data.items;
-    if (items && items.length > 0) {
-      const topItem = items[0]; // Get the first top item
 
-      if (type === "tracks") {
-        return {
+    if (items && items.length > 0) {
+      if (type === 'tracks') {
+        return items.map((topItem) => ({
           song_name: topItem.name,
           song_id: topItem.id,
           song_uri: topItem.uri,
           song_image: topItem.album?.images[0]?.url,
           artist_id: topItem.artists[0]?.id,
           artist_name: topItem.artists[0]?.name,
-        };
-      } else if (type === "artists") {
-        return {
+        }));
+      } else if (type === 'artists') {
+        return items.map((topItem) => ({
           artist_name: topItem.name,
           artist_id: topItem.id,
           artist_uri: topItem.uri,
           artist_photo: topItem.images[0]?.url,
-        };
+        }));
       }
     }
+    return []; 
   } catch (error) {
-    console.error("Error fetching top songs or artists:", error);
-    return {
-      error: "Error when getting user top items",
-      errorDetails: error,
-    };
+    console.error('Error fetching top songs or artists:', error.message);
+    return []; 
   }
 };

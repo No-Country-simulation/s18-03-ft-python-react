@@ -1,54 +1,54 @@
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { getUser } from "@/slices/userSlice";
+import { Song } from "@/types";
 import Image from "next/image";
 import { useEffect } from "react";
 
-
-const UserTopSong = () => {
-
+const UserTopSongs = () => {
   const data = useAppSelector((state) => state.userReducer.user);
   const dispatch = useAppDispatch();
+  
+  
+  const topSongs = data?.user_top_songs
+  ;
+  console.log(topSongs);  
 
-  
-  const topSong = data?.user_top_songs;
-  
-  console.log("topSong", topSong);
-  
   useEffect(() => {
     dispatch(getUser());
   }, [dispatch]);
 
-
   return (
-    <div className="mb-10 rounded-lg md:w-[50%]">
-      <h2 className="text-3xl text-white font-bold font-sans">Top Song</h2>
-
-      <div className="bg-spotify-light-gray mt-4 mb-10 rounded-lg">
+    <div className="w-[100%] md:w-[50%]">
+      <h2 className="text-3xl text-white font-bold font-sans">Top Songs</h2>
+      <div className="bg-spotify-light-gray mt-4 rounded-lg mb-10">
         <div>
-          {topSong && topSong.items && topSong.items.length > 0 ? (
-            topSong.items.slice(0, 10).map((song, index) => (
-              <div key={song.id} className="flex items-center gap-3 p-4 rounded-lg">
+          {topSongs && topSongs.length > 0 ? (
+            // Mapeamos las canciones del usuario
+            topSongs.map((song: Song, index: number) => (
+              <div key={song.song_id} className="flex items-center gap-3 p-4 rounded-lg">
                 <p className="text-[#63707F]">{index + 1}</p>
-                {song.album.images.length > 0 && (
+                {song.song_image ? (
                   <Image
-                    width={50}
+                    width={48}
                     height={50}
-                    src={song.album.images[0]?.url}
-                    alt={song.name}
-                    className="rounded-full object-fill  border-white"
+                    src={song.song_image}
+                    alt={song.song_name}
+                    className="rounded-full object-fill border-white"
                   />
-                )}
-                <h3>{song.name}</h3>
+                ) : null}
+                <div>
+                  <h3>{song.song_name}</h3>
+                  <p className="text-sm text-[#63707F]">{song.artist_name}</p>
+                </div>
               </div>
             ))
           ) : (
             <p>No hay canciones destacadas disponibles.</p>
           )}
         </div>
-          ))
+      </div>
     </div>
-    </div>
-  )
-}
+  );
+};
 
-export default UserTopSong
+export default UserTopSongs;
