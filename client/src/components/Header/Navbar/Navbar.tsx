@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { links } from "./Links";
 import Link from "next/link";
-import { User } from "@/slices/userSlice";
+import { getUser } from "@/slices/userSlice";
 import Image from "next/image";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 const Navbar = () => {
 
-  const [user, setUser] = useState<User | null>(null);
+ const data = useAppSelector((state) => state.userReducer.user);
+ const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      const parsedUser = JSON.parse(storedUser);
-      setUser(parsedUser?.user);
-    }
-  }, []);
+ const user = data?.user
+
+ useEffect(() => {
+  dispatch(getUser())
+ }, [dispatch])
 
 
   return (

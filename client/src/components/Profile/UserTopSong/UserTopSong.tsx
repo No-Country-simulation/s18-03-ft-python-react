@@ -1,26 +1,26 @@
-import { UserTopSongs } from "@/types";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { getUser } from "@/slices/userSlice";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 
 const UserTopSong = () => {
 
-  const [topSong, setTopSong] = useState<UserTopSongs | null>(null);
+  const data = useAppSelector((state) => state.userReducer.user);
+  const dispatch = useAppDispatch();
 
+  
+  const topSong = data?.user_top_songs;
+  
+  console.log("topSong", topSong);
+  
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      const parsedUser = JSON.parse(storedUser); 
-      console.log("parsedUser", parsedUser);
-      console.log("top_songs", parsedUser?.user_top_songs);
-
-      setTopSong(parsedUser?.user_top_songs);
-    }
-  }, []);
+    dispatch(getUser());
+  }, [dispatch]);
 
 
   return (
-    <div className="rounded-lg md:w-[50%]">
+    <div className="mb-10 rounded-lg md:w-[50%]">
       <h2 className="text-3xl text-white font-bold font-sans">Top Song</h2>
 
       <div className="bg-spotify-light-gray mt-4 mb-10 rounded-lg">
