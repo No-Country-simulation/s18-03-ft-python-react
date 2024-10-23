@@ -1,5 +1,3 @@
-import { useAppSelector } from "@/redux/hooks";
-import { useGetPreviewChatsQuery } from "@/services/chatsApi";
 import Image from "next/image";
 
 interface chats {
@@ -40,13 +38,12 @@ const chats:chats[] = [
 	}
 ]
 const PreviewChat = () => {
-	const appToken = useAppSelector((state) => state.userReducer.appToken?.token);
-
-	// adelanto de la solicitud a la API
-  const { data } = useGetPreviewChatsQuery({
-    appToken,
-    page:0
-  })
+	// adelanto de la solicitud a la API (descomentar las lineas siguiente e impotar las librerias para implementar y usar variable data)
+	// const appToken = useAppSelector((state) => state.userReducer.appToken?.token);
+  // const { data } = useGetPreviewChatsQuery({
+  //   appToken,
+  //   page:0
+  // })
 
   return (
     <div className="flex flex-col gap-4 mt-8">
