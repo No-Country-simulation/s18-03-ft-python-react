@@ -1,11 +1,11 @@
-import { Userinfo, UserTopArtistList, UserTopSongs } from "@/types";
+import { Artist, Song, Userinfo } from "@/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 // Define the User interface
 export interface User {
   user : Userinfo;
-  user_top_artist: UserTopArtistList;
-  user_top_songs: UserTopSongs;
+  user_top_artist: Artist[];
+  user_top_songs: Song[];
 
 }
 

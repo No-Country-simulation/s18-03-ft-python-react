@@ -34,7 +34,7 @@ const UserHeader = () => {
       <div className="flex flex-col gap-3 px-10 font-sans items-center md:items-end justify-center md:w-[50%] mb-8 ">
         <p className="text-white">{`${user?.followers} Followers`}</p>
         <a
-          href={user?.external_urls?.spotify}
+          href={user?.uri}
           className="text-white flex gap-3 items-center"
         >
           <FaSpotify className="text-xl text-white" /> open in Spotify
