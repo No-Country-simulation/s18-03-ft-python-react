@@ -4,6 +4,7 @@ import { getUser } from "@/slices/userSlice";
 import { Artist } from "@/types";
 import Image from "next/image";
 import { useEffect } from "react";
+import Link from "next/link";
 
 const UserTopArtist = () => {
  
@@ -31,11 +32,11 @@ const UserTopArtist = () => {
                 {artist?.artist_photo ? (
                     <Image width={50} height={50} src={artist?.artist_photo} alt={artist?.artist_name} className="rounded-full object-fill  border-white"/>
                 ) : null}
-                <h3>{artist?.artist_name}</h3>
+                <Link href={artist?.artist_uri}><h3 className="hover:text-spotify-green">{artist?.artist_name}</h3></Link>
               </div>
             ))
           ) : (
-            <p>No hay artistas destacados disponibles.</p>
+            <p>No highlight Artist avalaible for this user.</p>
           )}
         </div>
       </div>

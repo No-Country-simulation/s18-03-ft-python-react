@@ -3,6 +3,7 @@ import { getUser } from "@/slices/userSlice";
 import { Song } from "@/types";
 import Image from "next/image";
 import { useEffect } from "react";
+import Link from "next/link";
 
 const UserTopSongs = () => {
   const data = useAppSelector((state) => state.userReducer.user);
@@ -37,13 +38,13 @@ const UserTopSongs = () => {
                   />
                 ) : null}
                 <div>
-                  <h3>{song.song_name}</h3>
+                  <Link href={song?.song_uri}><h3 className="hover:text-spotify-green">{song.song_name}</h3></Link>
                   <p className="text-sm text-[#63707F]">{song.artist_name}</p>
                 </div>
               </div>
             ))
           ) : (
-            <p>No hay canciones destacadas disponibles.</p>
+            <p>No highlight songs avalaible for this user</p>
           )}
         </div>
       </div>
