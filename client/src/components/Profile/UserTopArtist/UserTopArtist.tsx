@@ -1,24 +1,14 @@
-
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { getUser } from "@/slices/userSlice";
-import { Artist } from "@/types";
+import { Artist, Userinfo } from "@/types";
 import Image from "next/image";
-import { useEffect } from "react";
 import Link from "next/link";
 
-const UserTopArtist = () => {
+type Props = {
+  user : Userinfo | null;
+};
+
+const UserTopArtist = ({user} : Props) => {
  
-  const data = useAppSelector((state) => state.userReducer.user);
-  const dispatch = useAppDispatch();
-  
-  
-
-  const topArtist = data?.user_top_artist;
-  console.log(topArtist)
-
-  useEffect(() => {
-    dispatch(getUser());
-  }, [dispatch]);
+  const topArtist = user?.user_top_artist;
 
   return (
     <div className=" w-[100%] md:w-[50%]">

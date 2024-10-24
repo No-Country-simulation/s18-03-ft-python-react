@@ -47,11 +47,13 @@ interface UserTopSongs {
 }
 
 export interface Userinfo {
-  id: string;
+  spotify_id: string;
   country: string;
   display_name: string;
   email: string;
   followers: number;
   uri: string;
   profile_photo: string;
+  user_top_artist: Artist[];
+  user_top_songs: Song[];
 }
