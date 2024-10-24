@@ -24,12 +24,19 @@ export const registerUserDb = async (userInfo, userTopSongs, userTopArtist) => {
     } = userTopSongs;
 
     console.log('User Top Artist:', userTopArtist);
+    console.log('User first genre jejejee:', userTopArtist[0]);
+
+
+    userTopArtist.forEach(element => {
+      console.log('eleeemeeents',element.unfilteredGenres)
+    });
     const {
       artist_name: topArtistName,
       artist_id: topArtistId,
       artist_uri: topArtistUri,
       artist_photo
     } = userTopArtist;
+    
 
 
     // Insert new user
