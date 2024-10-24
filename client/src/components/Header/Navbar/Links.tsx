@@ -1,5 +1,8 @@
 
-import { HomeIcon, ChatBubbleBottomCenterIcon, UsersIcon } from "@heroicons/react/24/outline";
+import { CiHome, CiChat1  } from "react-icons/ci";
+import { FaUserFriends } from "react-icons/fa";
+
+
 
 
 interface Link {
@@ -13,19 +16,19 @@ export const links: Link[] = [
   {
     id: 1,
     name: "Home",
-    url: "/home",
-    icon: <HomeIcon className="h-5 w-5" />, 
+    url: "/",
+    icon: <CiHome className="h-6 w-6" />, 
   },
   {
     id: 2,
     name: "Message",
     url: "/Message",
-    icon: <ChatBubbleBottomCenterIcon className="h-5 w-5" />,
+    icon: <CiChat1 className="h-6 w-6" />,
   },
   {
     id: 3,
     name: "Connect",
     url: "/connect",
-    icon: <UsersIcon className="h-5 w-5" />,
-  },
+    icon: <FaUserFriends className="h-6 w-6" />,
+  }
 ];
