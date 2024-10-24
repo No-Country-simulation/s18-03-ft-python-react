@@ -1,17 +1,27 @@
 
+import { searchUsers } from '@/supabase/searchUsers';
+import { Userinfo } from '@/types';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 const SearchComponent = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [results, setResults] = useState<Userinfo[]>([]);
   const router = useRouter();
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault(); 
+
+  
+  const handleSearch = async (e: React.FormEvent) => {
+    e.preventDefault();
     if (searchTerm) {
       router.push(`/search?q=${searchTerm}`);
+      const users = await searchUsers(searchTerm)
+      setResults(users)
     }
   };
+
+
+
 
   return (
     <div>

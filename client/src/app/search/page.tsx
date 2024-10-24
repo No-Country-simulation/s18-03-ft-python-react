@@ -1,30 +1,38 @@
 "use client";
 import { searchUsers } from "@/supabase/searchUsers";
 import { Userinfo } from "@/types";
+import Image from "next/image";
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 
 const Page = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState<Userinfo[]>([]);
-
   const router = useRouter();
   const param = useSearchParams();
+
+  const queryParam = param.get("q");
+
+  
+  useEffect(() => {
+    if (queryParam) {
+      setSearchTerm(queryParam); 
+      const fetchData = async () => {
+        const users = await searchUsers(queryParam);
+        setResults(users); 
+      };
+      fetchData();
+    }
+  }, [queryParam]);
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     if (searchTerm) {
       router.push(`/search?q=${searchTerm}`);
-      const users = await searchUsers(searchTerm)
-      setResults(users)
-      console.log("users", results)
     }
   };
-
-  const queryParam = param.get("q");
-
-  console.log("queryParam", queryParam);
 
   return (
     <div className="bg-spotify-dark-gray h-screen">
@@ -48,14 +56,26 @@ const Page = () => {
       </div>
 
       <div className="flex flex-col justify-center items-center mx-auto h-[60%] w-[90%] bg-[#282828] rounded-xl">
-        <div>
+        <div className="">
           <h2>Search Results:</h2>
         </div>
         <div>
         {results.length > 0 ? (
           <ul>
             {results.map((user) => (
-              <li key={user.id}>{user.display_name}</li>
+              <Link href={`/profile/${user.spotify_id} `} key={user.spotify_id}>
+              <li key={user.spotify_id}>
+                <Image
+                src={user.profile_photo}
+                alt={user.display_name}
+                width={24}
+                height={24}
+                className="rounded-full w-20 h-20 object-fill border-4 border-white"
+                />
+
+              
+                <p className="text-white text-center">{user.display_name}</p></li>
+            </Link>
             ))}
           </ul>
         ) : (

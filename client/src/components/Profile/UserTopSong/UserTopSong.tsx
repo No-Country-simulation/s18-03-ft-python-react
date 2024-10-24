@@ -1,23 +1,18 @@
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { getUser } from "@/slices/userSlice";
-import { Song } from "@/types";
+
+import { Song, Userinfo } from "@/types";
 import Image from "next/image";
-import { useEffect } from "react";
 import Link from "next/link";
 
-const UserTopSongs = () => {
-  const data = useAppSelector((state) => state.userReducer.user);
-  const dispatch = useAppDispatch();
-  
-  
-  const topSongs = data?.user_top_songs
-  ;
-  console.log(topSongs);  
 
-  useEffect(() => {
-    dispatch(getUser());
-  }, [dispatch]);
+type Props = {
+  user: Userinfo | null
+};
 
+const UserTopSongs = ({user}: Props) => {
+
+  
+  const topSongs = user?.user_top_songs
+  
   return (
     <div className="w-[100%] md:w-[50%]">
       <h2 className="text-3xl text-white font-bold font-sans">Top Songs</h2>
