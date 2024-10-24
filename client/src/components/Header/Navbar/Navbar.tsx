@@ -35,7 +35,7 @@ const Navbar = () => {
           ))}
           {user && (
             <Link
-              href={`/profile`}
+              href={`/profile/${user.spotify_id}`}
               className="flex flex-col items-center hover:text-primary"
             >
               <Image
@@ -70,7 +70,7 @@ const Navbar = () => {
         ))}
 
         {user && (
-          <Link href={`/profile`} className=" items-center hover:text-primary">
+          <Link href={`/profile/${user.spotify_id}`} className=" items-center hover:text-primary">
             <Image
               src={user.profile_photo}
               width={40}
