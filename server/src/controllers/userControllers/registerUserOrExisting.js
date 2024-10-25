@@ -1,6 +1,8 @@
 import { supabase } from '../../db.js'
+import { filteredFavoriteArtists } from '../algorithms/filteredFavoriteArtists.js';
 
 export const registerUserDb = async (userInfo, userTopSongs, userTopArtist) => {
+  const favoriteUserGenres = []
   try {
     const {
       country,
@@ -24,12 +26,11 @@ export const registerUserDb = async (userInfo, userTopSongs, userTopArtist) => {
     } = userTopSongs;
 
     console.log('User Top Artist:', userTopArtist);
-    console.log('User first genre jejejee:', userTopArtist[0]);
-
 
     userTopArtist.forEach(element => {
-      console.log('eleeemeeents',element.unfilteredGenres)
+      favoriteUserGenres.push(element.unfilteredGenres)
     });
+    
     const {
       artist_name: topArtistName,
       artist_id: topArtistId,
@@ -40,6 +41,9 @@ export const registerUserDb = async (userInfo, userTopSongs, userTopArtist) => {
 
 
     // Insert new user
+    console.log('genres filtereeeeed: ',favoriteUserGenres)
+    const filteredFav = filteredFavoriteArtists(favoriteUserGenres,5)
+    console.log('genres filtered successfully',filteredFav)
     const { data: newUser, error: newUserError } = await supabase
       .from('user')
       .insert([
@@ -52,6 +56,8 @@ export const registerUserDb = async (userInfo, userTopSongs, userTopArtist) => {
           uri,
           profile_photo,
           refresh_token,
+          favorite_genres: [...filteredFav]
+
         }
       ])
       .select();
@@ -116,8 +122,7 @@ export const registerUserDb = async (userInfo, userTopSongs, userTopArtist) => {
     return {
       success: true,
       user: {
-        // ...newUser[0]
-       ...userInfo
+        ...newUser[0]
       },
       user_top_artist: userTopArtist,
       user_top_songs: userTopSongs
@@ -146,6 +151,7 @@ export const verifyUserExist = async (spotify_id) => {
       message: 'Error when getting user from the database',
     };
   }
+
 
   if (existingUserWithDetails && existingUserWithDetails.length > 0) {
     console.log('User found and data retrieved');
