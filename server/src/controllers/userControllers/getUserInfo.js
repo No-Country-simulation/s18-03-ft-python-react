@@ -97,6 +97,7 @@ const getTopUserSongsOrTracks = async (access_token, type, limit = 10) => {
           artist_id: topItem.id,
           artist_uri: topItem.uri,
           artist_photo: topItem.images[0]?.url,
+          unfilteredGenres: topItem.genres
         }));
       }
     }
