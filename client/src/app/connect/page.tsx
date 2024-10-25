@@ -5,6 +5,9 @@ import ConnectCard from '@/components/Connect/ConnectCard';
 import { useState } from 'react';
 
 interface UserResponse {
+  songs: string[];
+  artists: string[];
+  genres: string[];
   country: string;
   display_name: string;
   profile_photo: string;
@@ -16,23 +19,36 @@ const fakeUsers = [
     country: 'Honduras',
     display_name: 'Luuiskame',
     profile_photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135768.png',
+    genres: ['rock', 'pop', 'alternative rock'],
+    artists: ['The Beatles', 'Coldplay', 'The Strokes', 'Radiohead', 'Adele', 'The Weeknd', 'Taylor Swift', 'Ariana Grande', 'Drake', 'Nirvana'],
+    songs: ['Hey Jude', 'Yellow', 'Reptilia', 'Creep', 'Rolling in the Deep', 'Blinding Lights', 'Love Story', '7 rings', 'Gods Plan', 'Smells Like Teen Spirit'],
   },
   {
     country: 'United States',
     display_name: 'John Doe',
     profile_photo: 'https://via.placeholder.com/150',
+    genres: ['hip hop', 'rap', 'pop'],
+    artists: ['Drake', 'Kanye West', 'The Weeknd', 'Kendrick Lamar', 'Jay-Z', 'Travis Scott', 'Post Malone', 'Cardi B', 'Lil Wayne', 'Future'],
+    songs: ['God\'s Plan', 'Stronger', 'Blinding Lights', 'HUMBLE.', 'Empire State of Mind', 'SICKO MODE', 'Sunflower', 'WAP', 'Lollipop', 'Mask Off'],
   },
   {
     country: 'Canada',
     display_name: 'Jane Smith',
     profile_photo: 'https://cdn-icons-png.flaticon.com/512/219/219969.png',
+    genres: ['pop', 'indie pop', 'dance'],
+    artists: ['Taylor Swift', 'Adele', 'Billie Eilish', 'Lorde', 'Dua Lipa', 'Ariana Grande', 'The Weeknd', 'Ed Sheeran', 'Sam Smith', 'Halsey'],
+    songs: ['Love Story', 'Someone Like You', 'bad guy', 'Royals', 'Levitating', '7 rings', 'Blinding Lights', 'Shape of You', 'Stay with Me', 'Without Me'],
   },
   {
     country: 'Germany',
     display_name: 'Hans Müller',
     profile_photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+    genres: ['electronic', 'techno', 'house'],
+    artists: ['Daft Punk', 'David Guetta', 'Calvin Harris', 'Deadmau5', 'Avicii', 'Tiesto', 'Marshmello', 'Skrillex', 'Martin Garrix', 'The Chainsmokers'],
+    songs: ['One More Time', 'Titanium', 'Summer', 'Strobe', 'Wake Me Up', 'Red Lights', 'Alone', 'Bangarang', 'Animals', 'Closer'],
   },
 ];
+
 
 // Fake users for the "similar taste" filter
 const fakeUsers2 = [
@@ -103,6 +119,9 @@ export default function Page() {
           country={user.country}
           display_name={user.display_name}
           profile_photo={user.profile_photo}
+          favGenres={user.genres}
+          favArtists={user.artists}
+          favSongs={user.songs}
         />
       ))}
     </div>
