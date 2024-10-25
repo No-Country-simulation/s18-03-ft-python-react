@@ -4,7 +4,6 @@ import Link from "next/link";
 import { getUser } from "@/slices/userSlice";
 import Image from "next/image";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { FiSearch } from "react-icons/fi";
 import Search from "@/components/Search/Search";
 
 const Navbar = () => {
@@ -51,14 +50,7 @@ const Navbar = () => {
       </nav>
 
       <div className="fixed z-50  bottom-0 left-0 w-full bg-spotify-light-gray text-white flex justify-around md:hidden py-6">
-        <Link
-          href={`/search`}
-          className="flex items-center justify-center hover:text-primary"
-        >
-          <span className="inline-block text-2xl  ">
-            <FiSearch />
-          </span>
-        </Link>
+        
         {links.map(({ id, url, icon }) => (
           <Link
             href={url}

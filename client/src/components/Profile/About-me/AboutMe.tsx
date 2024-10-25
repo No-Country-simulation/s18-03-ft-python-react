@@ -1,6 +1,14 @@
+
+import { Userinfo } from '@/types';
 import React, { useState } from 'react';
 
-const AboutMe = () => {
+type Props = {
+  isOwnProfile: boolean;
+  user: Userinfo | null;
+}
+
+
+const AboutMe = ({isOwnProfile, user} : Props) => {
   const [isEditing, setIsEditing] = useState(false);  
   const [aboutMe, setAboutMe] = useState('');         
 
@@ -10,7 +18,7 @@ const AboutMe = () => {
 
   return (
     <div className='mb-20'>
-      <h2 className="text-3xl font-bold text-white font-sans text-center">About Me</h2>
+      <h2 className="text-3xl font-bold text-white font-sans text-center">About {user?.display_name}</h2>
       <div className="flex flex-col items-center justify-center gap-4 w-full mt-5">
       
         {isEditing ? (
@@ -25,9 +33,11 @@ const AboutMe = () => {
           </p>
         )}
        
+        {isOwnProfile && (
         <button onClick={handleSave} className="bg-spotify-green text-white px-4 py-2 rounded-lg">
           {isEditing ? 'Save' : 'Edit'}
         </button>
+      )}
       </div>
     </div>
   );
