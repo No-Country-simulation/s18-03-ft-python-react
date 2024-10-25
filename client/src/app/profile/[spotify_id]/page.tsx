@@ -7,6 +7,7 @@ import React, { useState, useEffect } from "react";
 import { useAppSelector } from "@/redux/hooks";
 import { searchUsersById } from "@/supabase/searchUsers";
 import { Userinfo } from "@/types";
+import UserTopGenres from "@/components/Profile/UserTopGenres/UserTopGenres";
 
 type Params = {
   spotify_id: string;
@@ -53,6 +54,7 @@ export default function Page({ params }: { params: Params }) {
           <div className="flex flex-col md:flex-row gap-4">
             <UserTopArtist user={userData} />
             <UserTopSong user={userData} />
+            <UserTopGenres user={userData} />
           </div>
         );
       case "about":
