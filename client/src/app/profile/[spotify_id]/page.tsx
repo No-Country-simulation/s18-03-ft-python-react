@@ -9,6 +9,7 @@ import { searchUsersById } from "@/supabase/searchUsers";
 import { Userinfo } from "@/types";
 import UserTopGenres from "@/components/Profile/UserTopGenres/UserTopGenres";
 
+
 type Params = {
   spotify_id: string;
 };
