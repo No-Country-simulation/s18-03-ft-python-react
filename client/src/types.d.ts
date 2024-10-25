@@ -56,4 +56,5 @@ export interface Userinfo {
   profile_photo: string;
   user_top_artist: Artist[];
   user_top_songs: Song[];
+  favorite_genres: string[];
 }
