@@ -61,8 +61,8 @@ export default function Page() {
 
   return (
     <div className="bg-spotify-dark-gray w-[90%] mx-auto md:w-[100%] md:ml-5 h-[100dvh] flex flex-col gap-[1rem]">
-      <ConnectHeader fetchFilter={fetchFilter} activeButton={activeButton}/>
-      <h2 className='text-center mt-2'>{message}</h2>
+      <ConnectHeader fetchFilter={fetchFilter} activeButton={activeButton} />
+      <h2 className='text-center md:text-start mt-5'>{message}</h2>
       {/* Rendering users based on selected filter */}
       {data.map((user) => (
         <ConnectCard

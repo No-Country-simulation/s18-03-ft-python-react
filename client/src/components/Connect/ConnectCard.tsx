@@ -14,7 +14,7 @@ interface props {
 export default function ConnectCard({country, display_name, profile_photo, favGenres, favArtists, favSongs}: props) {
 
   return (
-    <div className="bg-spotify-light-gray p-4 rounded-lg shadow-lg w-[100%] min-w-[280px] max-w-[300px] self-center md:self-start flex flex-col items-center gap-4">
+    <div className="bg-spotify-light-gray p-4 rounded-lg shadow-lg w-[100%] min-w-[280px] max-w-[450px] self-center md:self-start flex flex-col items-center gap-4">
       
       <div className="flex items-center space-x-4 self-start">
         <img

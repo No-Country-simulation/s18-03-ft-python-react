@@ -5,7 +5,7 @@ interface props {
   activeButton: string;
 }
 
-export default function ConnectHeader({ fetchFilter, activeButton }: props) {
+export default function ConnectHeader({ fetchFilter, activeButton}: props) {
   const handleClick = (category: string) => {
     fetchFilter(category);
   };
@@ -17,6 +17,7 @@ export default function ConnectHeader({ fetchFilter, activeButton }: props) {
       </h2>
 
       <div className="flex justify-between md:self-start pt-6 max-w-[550px]">
+
         {["recent", "taste", "match"].map((category) => (
           <button
             key={category}
