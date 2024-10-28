@@ -5,12 +5,14 @@ import ConnectCard from '@/components/Connect/ConnectCard';
 import { useState } from 'react';
 
 import { getRecentUsers } from '@/supabase/getRecentUsers';
+import { Artist, Song } from '@/types';
+
 
 
 interface UserResponse {
-  songs: string[];
-  artists: string[];
-  genres: string[];
+  favorite_genres: string[];
+  user_top_songs: Song[];
+  user_top_artist: Artist[];
   country: string;
   display_name: string;
   profile_photo: string;
@@ -70,9 +72,9 @@ export default function Page() {
           country={user.country}
           display_name={user.display_name}
           profile_photo={user.profile_photo}
-          favGenres={user.genres}
-          favArtists={user.artists}
-          favSongs={user.songs}
+          favGenres={user.favorite_genres}
+          favArtists={user.user_top_artist}
+          favSongs={user.user_top_songs}
         />
       ))}
     </div>

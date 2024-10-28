@@ -1,17 +1,20 @@
 import Image from 'next/image';
 
 import CompatibilityBar from '@/shared/CompatibilityBar';
+import { Artist, Song } from '@/types';
+
 
 interface props {
     country: string;
     display_name: string;
     profile_photo: string;
     favGenres: string[];
-    favArtists: string[]
-    favSongs: string[]
+    favArtists: Artist[]
+    favSongs: Song[]
 }
 
 export default function ConnectCard({country, display_name, profile_photo, favGenres, favArtists, favSongs}: props) {
+
 
   return (
     <div className="bg-spotify-light-gray p-4 rounded-lg shadow-lg w-[100%] min-w-[280px] max-w-[450px] self-center md:self-start flex flex-col items-center gap-4">

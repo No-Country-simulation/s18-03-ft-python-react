@@ -6,7 +6,7 @@ export const getRecentUsers = async(numberToGet: number) => {
     try {
         const {data, error} = await supabase
         .from('user')
-        .select('*').order('created_at', {ascending: false}).limit(numberToGet)
+        .select('*, user_top_artist(*), user_top_songs(*)').order('created_at', {ascending: false}).limit(numberToGet)
 
         if(error){
             return {

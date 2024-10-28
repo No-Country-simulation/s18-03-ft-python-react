@@ -1,17 +1,21 @@
 'use client'
 
-import { useState } from "react";
+import useGetUserCompatibilityNumber from "@/hooks/useGetUserCompatibilityNumber";
+import { Artist, Song } from '@/types';
+
 
 interface Props {
-  favSongs: string[];
-  favArtists: string[];
+  favSongs: Song[];
+  favArtists: Artist[];
   favGenres: string[];
 }
 
 export default function CompatibilityBar({ favGenres, favArtists, favSongs }: Props) {
-  const [num, setNum] = useState<number>(10);
+  const {compatibilityNumber} = useGetUserCompatibilityNumber(favGenres, favArtists, favSongs)
+
+  console.log(favArtists)
   
-  const percentage = (num / 10) * 100;
+  const percentage = (compatibilityNumber / 10) * 100;
   
   // Function to generate gradient colors based on number
   const getGradient = (num: number) => {
@@ -60,8 +64,8 @@ export default function CompatibilityBar({ favGenres, favArtists, favSongs }: Pr
       textAlign: 'center',
       gap: '12px'
     }}>
-      <p style={getCompatibilityText(num)}>
-        compatibility {num >= 8 ? '✨' : ''}
+      <p style={getCompatibilityText(compatibilityNumber)}>
+        compatibility {compatibilityNumber >= 8 ? '✨' : ''}
       </p>
       
       <div style={{
@@ -73,7 +77,7 @@ export default function CompatibilityBar({ favGenres, favArtists, favSongs }: Pr
         maxWidth: '350px',
         margin: '0 auto',
         width: '100%',
-        boxShadow: num >= 8 ? '0 0 10px rgba(29, 185, 84, 0.3)' : 'none',
+        boxShadow: compatibilityNumber >= 8 ? '0 0 10px rgba(29, 185, 84, 0.3)' : 'none',
         transition: 'box-shadow 300ms ease-in-out'
       }}>
         <div style={{
@@ -81,10 +85,10 @@ export default function CompatibilityBar({ favGenres, favArtists, favSongs }: Pr
           top: 0,
           left: 0,
           height: '100%',
-          background: getGradient(num),
+          background: getGradient(compatibilityNumber),
           width: `${percentage}%`,
           transition: 'all 300ms ease-in-out',
-          animation: num >= 8 ? 'pulse 2s infinite' : 'none'
+          animation: compatibilityNumber >= 8 ? 'pulse 2s infinite' : 'none'
         }} />
         
         {/* Grid marks */}
@@ -101,7 +105,7 @@ export default function CompatibilityBar({ favGenres, favArtists, favSongs }: Pr
               key={i}
               style={{
                 flex: 1,
-                borderLeft: i === 0 ? 'none' : `1px solid ${num >= 8 ? '#1a1a1a' : '#282828'}`,
+                borderLeft: i === 0 ? 'none' : `1px solid ${compatibilityNumber >= 8 ? '#1a1a1a' : '#282828'}`,
                 transition: 'border-color 300ms ease-in-out'
               }}
             />
