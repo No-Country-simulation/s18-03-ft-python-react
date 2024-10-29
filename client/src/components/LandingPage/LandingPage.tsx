@@ -6,8 +6,10 @@ import GenereOfTheDay from "./components/GenereOfTheDay";
 import PopularSongNow from "./components/PopularSongNow";
 import ArtisOfTheDay from "./components/songOfTheDay";
 
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
+
 // shared components
-import LoginBtn from "@/shared/LoginBtn";
+//import LoginBtn from "@/shared/LoginBtn";
 
 import RecentlyJoined from "./components/RecentlyJoined";
 import { useAppSelector } from "@/redux/hooks";
@@ -46,7 +48,7 @@ export default function LandingPage() {
         )}
 
 
-      //  <LoginBtn/>
+   { /* <LoginBtn /> */}
         
 
       </header>
