@@ -2,6 +2,12 @@
 import Image from "next/image";
 import { FaSpotify } from "react-icons/fa";
 import { Userinfo } from "@/types";
+import CompatibilityBar from "@/shared/CompatibilityBar";
+
+import { useAppSelector } from "@/redux/hooks";
+
+// shared components
+import LoginBtn from "@/shared/LoginBtn";
 
 type Props = {
   isOwnProfile: boolean;
@@ -9,6 +15,8 @@ type Props = {
 };
 
 const UserHeader = ({ isOwnProfile, user }: Props) => {
+
+  const isLocalUser = useAppSelector(state=> state.userReducer?.user)
   
 
   return (
@@ -34,13 +42,23 @@ const UserHeader = ({ isOwnProfile, user }: Props) => {
           <FaSpotify className="text-xl text-white" /> open in Spotify
         </a>
         {!isOwnProfile && (
+          <div className="flex flex-col gap-3 max-w[300px]">
           <button
             type="button"
             className="bg-spotify-green text-white px-4 py-1 rounded-lg hover:bg-spotify-green/40 text-center font-sans font-bold text-lg"
           >
             Agregar amigo
           </button>
+          <CompatibilityBar favGenres={user?.favorite_genres} favArtists={user?.user_top_artist} favSongs={user?.user_top_songs}/>
+          </div>
+          
         )}
+        {isLocalUser === undefined || isLocalUser === null && (
+        <div className="text-center w-[90%] mx-auto mt-6 max-w-[400px]">
+          <p className="font-extrabold text-[1rem]">Log in to see your own stats and compatibility with {user?.display_name}</p>
+          <LoginBtn/>
+        </div>
+      )}
       </div>
     </section>
   );

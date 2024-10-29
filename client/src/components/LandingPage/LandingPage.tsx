@@ -1,17 +1,21 @@
 "use client";
 import React, { useEffect } from "react";
-import { ArrowRightIcon } from "@heroicons/react/24/solid";
 // components
 import MostListened from "./components/MostListened";
 import GenereOfTheDay from "./components/GenereOfTheDay";
 import PopularSongNow from "./components/PopularSongNow";
 import ArtisOfTheDay from "./components/songOfTheDay";
 
+// shared components
+import LoginBtn from "@/shared/LoginBtn";
+
 import RecentlyJoined from "./components/RecentlyJoined";
 import { useAppSelector } from "@/redux/hooks";
 
 export default function LandingPage() {
+
   const loginRedirect = process.env.NEXT_PUBLIC_AUTHORIZE_LOGIN;
+
   const userAuth = useAppSelector((state) => state.userReducer.user);
   const user = useAppSelector((state) => state.userReducer.user);
 
@@ -31,6 +35,7 @@ export default function LandingPage() {
         <p className="text-spotify-white text-center font-semibold">
           Join to see your stats and engage with other music lovers!
         </p>
+
         {!user && (
           <a
             href={loginRedirect}
@@ -39,6 +44,11 @@ export default function LandingPage() {
             Log in <ArrowRightIcon className="size-6 text-spotify-green" />
           </a>
         )}
+
+
+      //  <LoginBtn/>
+        
+
       </header>
 
       <section className="mt-[2rem]">

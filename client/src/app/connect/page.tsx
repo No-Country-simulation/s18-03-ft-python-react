@@ -2,110 +2,97 @@
 
 import ConnectHeader from '@/components/Connect/ConnectHeader';
 import ConnectCard from '@/components/Connect/ConnectCard';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { getRecentUsers } from '@/supabase/getRecentUsers';
+import { Artist, Song } from '@/types';
+
+import { useAppSelector } from "@/redux/hooks"
+
 
 interface UserResponse {
+  favorite_genres: string[];
+  user_top_songs: Song[];
+  user_top_artist: Artist[];
   country: string;
   display_name: string;
   profile_photo: string;
 }
 
-// Initial fake user data for the random filter
-const fakeUsers = [
-  {
-    country: 'Honduras',
-    display_name: 'Luuiskame',
-    profile_photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135768.png',
-  },
-  {
-    country: 'United States',
-    display_name: 'John Doe',
-    profile_photo: 'https://via.placeholder.com/150',
-  },
-  {
-    country: 'Canada',
-    display_name: 'Jane Smith',
-    profile_photo: 'https://cdn-icons-png.flaticon.com/512/219/219969.png',
-  },
-  {
-    country: 'Germany',
-    display_name: 'Hans Müller',
-    profile_photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
-  },
-];
-
-// Fake users for the "similar taste" filter
-const fakeUsers2 = [
-  {
-    country: 'Brazil',
-    display_name: 'Ana Souza',
-    profile_photo: 'https://cdn-icons-png.flaticon.com/512/145/145849.png',
-  },
-  {
-    country: 'France',
-    display_name: 'Pierre Dupont',
-    profile_photo: 'https://cdn-icons-png.flaticon.com/512/236/236831.png',
-  },
-  {
-    country: 'Mexico',
-    display_name: 'Carlos Garcia',
-    profile_photo: 'https://cdn-icons-png.flaticon.com/512/219/219986.png',
-  },
-];
-
-// Fake users for the "random match" filter
-const fakeUsers3 = [
-  {
-    country: 'Italy',
-    display_name: 'Giovanni Rossi',
-    profile_photo: 'https://cdn-icons-png.flaticon.com/512/2922/2922510.png',
-  },
-  {
-    country: 'Japan',
-    display_name: 'Sakura Tanaka',
-    profile_photo: 'https://cdn-icons-png.flaticon.com/512/2922/2922549.png',
-  },
-  {
-    country: 'Spain',
-    display_name: 'Maria Gomez',
-    profile_photo: 'https://cdn-icons-png.flaticon.com/512/2922/2922656.png',
-  },
-];
-
 export default function Page() {
-  const [data, setCurrentData] = useState<UserResponse[]>(fakeUsers);
+  const [data, setCurrentData] = useState<UserResponse[]>([]);
+  const [message, setMessage] = useState<string>('Meet New Members') // Set default message
+  const [loading, setLoading] = useState<boolean>(true) // Start with loading true
+  const [activeButton, setActiveButton] = useState<string>('recent') // Set default active button
 
-  // Function to handle filter changes
-  const fetchFilter = (filterType: string) => {
+  const userId = useAppSelector(state => state.userReducer?.user?.user.id) as string
+
+    console.log(userId)
+
+  //! to do next: use effect having dep arr with active button, based on that fetchLastestUsers needs to be remake to handle all different cases which should be done within this function
+  const fetchLastestUsers = async () => {
+    setLoading(true);
+    try {
+      const recentUsers = await getRecentUsers(5, userId) as UserResponse[];
+      setCurrentData([...recentUsers]);
+      console.log(recentUsers);
+    } catch (error) {
+      console.error('Error fetching users:', error);
+      // Optionally handle error state here
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Fetch recent users on component mount
+
+  //! when the user refresh the page, we could see same user repeated if its recent
+  useEffect(() => {
+    fetchLastestUsers();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userId]);
+
+  const fetchFilter = async (filterType: string) => {
     switch (filterType) {
-      case 'random':
-        setCurrentData(fakeUsers);
+      case 'recent':
+        setActiveButton('recent');
+        setMessage('Meet New Members');
+        await fetchLastestUsers();
         break;
       case 'taste':
-        setCurrentData(fakeUsers2);
+        setActiveButton('taste');
+        setMessage('Users with a similar taste');
+        // setCurrentData(fakeUsers2);
         break;
       case 'match':
-        setCurrentData(fakeUsers3);
+        setActiveButton('match');
+        setMessage('Let us find your ideal music partner');
+        // setCurrentData(fakeUsers3);
         break;
       default:
-        setCurrentData([]); // Empty if no valid filter is provided
+        setCurrentData([]);
         break;
     }
   };
 
+  if(loading){
+    return <p className='text-[#fff]'>Loading...</p> // Fixed typo in "Loading"
+  }
+
   return (
     <div className="bg-spotify-dark-gray w-[90%] mx-auto md:w-[100%] md:ml-5 h-[100dvh] flex flex-col gap-[1rem]">
-      <ConnectHeader fetchFilter={fetchFilter} />
-      {/* Rendering users based on selected filter */}
+      <ConnectHeader fetchFilter={fetchFilter} activeButton={activeButton} />
+      <h2 className='text-center md:text-start mt-5 text-[1.8rem] font-extrabold'>{message}</h2>
       {data.map((user) => (
         <ConnectCard
           key={user.display_name}
           country={user.country}
           display_name={user.display_name}
           profile_photo={user.profile_photo}
+          favGenres={user.favorite_genres}
+          favArtists={user.user_top_artist}
+          favSongs={user.user_top_songs}
         />
       ))}
     </div>
   );
 }
-
