@@ -3,7 +3,6 @@ import Image from 'next/image';
 import CompatibilityBar from '@/shared/CompatibilityBar';
 import { Artist, Song } from '@/types';
 
-
 interface props {
     country: string;
     display_name: string;

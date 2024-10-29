@@ -1,6 +1,6 @@
 import { supabase } from "./supabaseClient";
 
-export const getRecentUsers = async (numberToGet: number, userId: string) => {
+export const getRecentUsers = async (numberToGet: number, userId?: string) => {
   try {
     if (userId) {
       const { data, error } = await supabase

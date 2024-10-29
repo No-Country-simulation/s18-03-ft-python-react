@@ -44,10 +44,12 @@ export default function Page() {
   };
 
   // Fetch recent users on component mount
+
+  //! when the user refresh the page, we could see same user repeated if its recent
   useEffect(() => {
     fetchLastestUsers();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [userId]);
 
   const fetchFilter = async (filterType: string) => {
     switch (filterType) {

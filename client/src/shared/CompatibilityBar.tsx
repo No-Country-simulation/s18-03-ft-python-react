@@ -5,9 +5,9 @@ import { Artist, Song } from '@/types';
 
 
 interface Props {
-  favSongs: Song[];
-  favArtists: Artist[];
-  favGenres: string[];
+  favSongs?: Song[];
+  favArtists?: Artist[];
+  favGenres?: string[];
 }
 
 export default function CompatibilityBar({ favGenres, favArtists, favSongs }: Props) {
