@@ -79,17 +79,17 @@ export default function Page({ params }: { params: Params }) {
       {/* Barra de navegación */}
       <div className="flex justify-start bg-spotify-light-gray px-10 ">
         <button
-          className={`px-4 py-2 ${
+          className={`px-4 py-2 font-sans font-bold ${
             activeTab === "Info"
-              ? "border-b-8 border-spotify-green text-white"
-              : "text-gray-300"
+              ? "border-b-8 border-spotify-green text-white "
+              : "text-gray-300 "
           }`}
           onClick={() => setActiveTab("Info")}
         >
           Info
         </button>
         <button
-          className={`px-4 py-2 ${
+          className={`px-4 py-2 font-sans font-bold ${
             activeTab === "about"
               ? "text-white border-b-8 border-spotify-green"
               : "text-gray-300"
