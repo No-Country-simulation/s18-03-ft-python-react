@@ -8,7 +8,6 @@ type Props = {
 const UserTopGenres = ({ user }: Props) => {
   const topGenres = user?.favorite_genres;
 
-  console.log(topGenres);
 
   return (
     <div className="mb-20 w-[100%] md:w-[50%]">

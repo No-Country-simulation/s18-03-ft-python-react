@@ -58,4 +58,8 @@ export interface Userinfo {
   user_top_artist: Artist[];
   user_top_songs: Song[];
   favorite_genres: string[];
+  about: string;
+  country: string,
+  created_at: string
+
 }
