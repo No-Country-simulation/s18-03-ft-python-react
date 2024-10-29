@@ -12,13 +12,13 @@ export default function ConnectHeader({ fetchFilter, activeButton}: props) {
 
   return (
     <div className="">
-      <h2 className="text-center text-spotify-green pt-3 text-2xl font-bold">
+      <h1 className="text-center text-spotify-green pt-3 text-2xl font-bold">
         Find a music partner
-      </h2>
+      </h1>
 
       <div className="flex justify-between md:self-start pt-6 max-w-[550px]">
-
-        {["recent", "taste", "match"].map((category) => (
+        {/* ["recent", "taste", "match"] */}
+        {["recent"].map((category) => (
           <button
             key={category}
             className={`${

@@ -48,6 +48,7 @@ interface UserTopSongs {
 
 export interface Userinfo {
   spotify_id: string;
+  id: string;
   country: string;
   display_name: string;
   email: string;
@@ -56,4 +57,5 @@ export interface Userinfo {
   profile_photo: string;
   user_top_artist: Artist[];
   user_top_songs: Song[];
+  favorite_genres: string[]
 }
