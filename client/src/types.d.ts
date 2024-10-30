@@ -3,6 +3,7 @@ export interface Artist {
     artist_name: string;
     artist_photo:string;
     artist_uri: string 
+    popularity: number;
 }
 
 

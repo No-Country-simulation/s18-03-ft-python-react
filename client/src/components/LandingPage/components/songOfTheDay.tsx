@@ -14,7 +14,7 @@ export default function ArtisOfTheDay() {
   const releaseYear = 2024;
 
   return (
-    <section className="md:w-[50%]">
+    <article className="md:w-[50%] flex flex-col items-center">
       <h3 className="text-spotify-green text-center text-lg font-bold mb-4">
         Song Of The Day
       </h3>
@@ -25,7 +25,8 @@ export default function ArtisOfTheDay() {
             <Image
               src={TopSong.albumImageUrl || "/placeholder-image.jpg"}
               width={620}
-              height={620}
+              height={420}
+              className="rounded-lg"
               alt={TopSong.songName}
             />
 
@@ -71,6 +72,6 @@ export default function ArtisOfTheDay() {
           </div>
         </>
       )}
-    </section>
+    </article>
   );
 }

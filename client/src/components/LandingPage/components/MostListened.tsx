@@ -25,7 +25,7 @@ export default function MostListened() {
   if (error) return <p className="text-center text-red-500">Error</p>;
 
   return (
-    <article className="">
+    <article className="md:w-[50%] flex flex-col items-center">
       <h3 className="text-spotify-green text-center text-lg font-bold mb-4">
         Artist Of The Day
       </h3>
@@ -36,8 +36,8 @@ export default function MostListened() {
             <Image
               src={mostPopularArtist.images[0]?.url}
               width={620}
-              height={620}
-              // className="rounded-lg"
+              height={420}
+              className="rounded-lg"
               alt={mostPopularArtist.name}
             />
 

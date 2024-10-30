@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 // components
 import MostListened from "./components/MostListened";
 import GenereOfTheDay from "./components/GenereOfTheDay";
-import PopularSongNow from "./components/PopularSongNow";
+// import PopularSongNow from "./components/PopularSongNow";
 import ArtisOfTheDay from "./components/songOfTheDay";
 
 // shared components
@@ -24,7 +24,7 @@ export default function LandingPage() {
   }, [userAuth]);
 
   return (
-    <main className="w-[90%] mx-auto max-w-[1250px] h-[100%]">
+    <main className="w-[90%] mx-auto max-w-[1150px] h-[100%]">
       <header className="pt-6 pb-4 flex flex-col gap-6 max-w-md mx-auto">
       <h1 className="text-spotify-green font-bold text-4xl text-center leading-tight">
         Discover Your Next
@@ -51,9 +51,9 @@ export default function LandingPage() {
         <GenereOfTheDay />
       </section>
 
-      <section>
+      {/* <section>
         <PopularSongNow />
-      </section>
+      </section> */}
 
       <section className="bg-spotify-light-gray mt-4 mb-4 rounded-lg w-full p-6">
         <RecentlyJoined />
