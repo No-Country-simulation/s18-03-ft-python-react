@@ -28,6 +28,18 @@ const nextConfig = {
           port: '',  
           pathname: '/api/portraits/**',
 
+        },
+        {
+          protocol: 'https',
+          hostname: 'cdn-icons-png.flaticon.com',
+          port: '',
+          pathname: '/**',
+        },
+        {
+          protocol: 'https',
+          hostname: 'via.placeholder.com',
+          port: '',
+          pathname: '/**',
         }
       ],
     },

@@ -9,16 +9,19 @@ export default function VerifyInfo() {
 
   const authUser = useAppSelector((state) => state.userReducer.user);
   const dispatch = useAppDispatch();
+
   const router = useRouter()
 
-  console.log(data?.userData)
+  console.log("data", data)
 
-    useEffect(() => {
-      if (data) {
-        dispatch(setUser(data));
-        router.push('/')
-      }
-    }, [data, dispatch, router]);
+
+
+  useEffect(() => {
+    if (data && !error) {
+      dispatch(setUser(data));
+     router.push(`/profile/${data?.user?.spotify_id}`);
+    }
+  }, [data, error, dispatch, router]);
 
 
   console.log("user", authUser)

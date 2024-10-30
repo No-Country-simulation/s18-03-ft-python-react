@@ -1,41 +1,20 @@
 export interface Artist {
-    id: string;
-    name: string;
+    artist_id: string;
+    artist_name: string;
+    artist_photo:string;
+    artist_uri: string 
     popularity: number;
-    images: ArtistImage[];
-    genres: string[];
-    followers: {
-      total: number;
-    };
 }
 
- export interface ArtistImage {
-    height: number;
-    url: string;
-    width: number;
-}
 
 export interface Song {
-  name: string;
-  id: string;
-  songName: string;
-  albumName: string;
-  album: SongAlbum;
-  albumImageUrl: string;
-  artists: string;
-  popularity: number;
-  external_urls: {
-    spotify: string;
-  };
-  preview_url: string | null;
+  artist_id: string;
+  artist_name: string;
+  song_id: string;
+  song_image: string;
+  song_name: string;
+  song_uri: string;
 }
-
-export interface songAlbum {              
-  images: ArtistImage[]
-  name: string
-  release_date: string
-}
-
 
 export interface Playlist {
   id: string;
@@ -56,4 +35,32 @@ export interface UserTopArtistList {
   limit: number;
   offset: number;
   href: string;
+}
+
+interface UserTopSongs {
+  items: Song[];
+  total: number;
+  limit: number;
+  offset: number;
+  href: string;
+  next: string | null;
+  previous: string | null;
+}
+
+export interface Userinfo {
+  spotify_id: string;
+  id: string;
+  country: string;
+  display_name: string;
+  email: string;
+  followers: number;
+  uri: string;
+  profile_photo: string;
+  user_top_artist: Artist[];
+  user_top_songs: Song[];
+  favorite_genres: string[];
+  about: string;
+  country: string,
+  created_at: string
+
 }

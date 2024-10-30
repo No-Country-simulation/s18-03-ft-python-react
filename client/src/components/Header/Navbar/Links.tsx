@@ -1,4 +1,9 @@
-import { FaHome, FaEnvelope, FaSignInAlt, FaUser } from 'react-icons/fa'; 
+
+import { CiHome } from "react-icons/ci";
+import { FaUserFriends } from "react-icons/fa";
+
+
+
 
 interface Link {
   id: number;
@@ -12,24 +17,12 @@ export const links: Link[] = [
     id: 1,
     name: "Home",
     url: "/",
-    icon: <FaHome />, 
-  },
-  {
-    id: 2,
-    name: "Message",
-    url: "/Message",
-    icon: <FaEnvelope />,
+    icon: <CiHome className="h-6 w-6" />, 
   },
   {
     id: 3,
-    name: "Login",
-    url: "/Login",
-    icon: <FaSignInAlt />,
-  },
-  {
-    id: 4,
-    name: "Profile",
-    url: "/Profile",
-    icon: <FaUser />,
-  },
+    name: "Connect",
+    url: "/connect",
+    icon: <FaUserFriends className="h-6 w-6" />,
+  }
 ];
