@@ -16,6 +16,7 @@ interface UserResponse {
   country: string;
   display_name: string;
   profile_photo: string;
+  spotify_id: string
 }
 
 export default function Page() {
@@ -88,6 +89,7 @@ export default function Page() {
           country={user.country}
           display_name={user.display_name}
           profile_photo={user.profile_photo}
+          spotify_id={user.spotify_id}
           favGenres={user.favorite_genres}
           favArtists={user.user_top_artist}
           favSongs={user.user_top_songs}

@@ -22,7 +22,7 @@ export const links: Link[] = [
   {
     id: 2,
     name: "Message",
-    url: "/Message",
+    url: "/messages",
     icon: <CiChat1 className="h-6 w-6" />,
   },
   {
