@@ -6,17 +6,13 @@ import GenereOfTheDay from "./components/GenereOfTheDay";
 import PopularSongNow from "./components/PopularSongNow";
 import ArtisOfTheDay from "./components/songOfTheDay";
 
-import { ArrowRightIcon } from "@heroicons/react/24/outline";
-
 // shared components
-//import LoginBtn from "@/shared/LoginBtn";
+import LoginBtn from "@/shared/LoginBtn";
 
 import RecentlyJoined from "./components/RecentlyJoined";
 import { useAppSelector } from "@/redux/hooks";
 
 export default function LandingPage() {
-
-  const loginRedirect = process.env.NEXT_PUBLIC_AUTHORIZE_LOGIN;
 
   const userAuth = useAppSelector((state) => state.userReducer.user);
   const user = useAppSelector((state) => state.userReducer.user);
@@ -29,29 +25,16 @@ export default function LandingPage() {
 
   return (
     <main className="w-[90%] mx-auto max-w-[1250px] h-[100%]">
-      <header className="pt-1 flex flex-col gap-[1rem]">
-        <h1 className="text-spotify-green font-bold text-[1.6rem] text-center">
-          Welcome To Your Music Journey
-        </h1>
+      <header className="pt-6 pb-4 flex flex-col gap-6 max-w-md mx-auto">
+      <h1 className="text-spotify-green font-bold text-4xl text-center leading-tight">
+        Discover Your Next
+        <span className="block">Music Partner</span>
+      </h1>
 
-        <p className="text-spotify-white text-center font-semibold">
-          Join to see your stats and engage with other music lovers!
-        </p>
-
-        {!user && (
-          <a
-            href={loginRedirect}
-            className="text-spotify-green rounded font-bold flex gap-[.2rem] justify-center mx-auto max-w-[160px] text-center"
-          >
-            Log in <ArrowRightIcon className="size-6 text-spotify-green" />
-          </a>
-        )}
-
-
-   { /* <LoginBtn /> */}
-        
-
-      </header>
+      {!user && (
+          <LoginBtn />
+      )}
+    </header>
 
       <section className="mt-[2rem]">
         <h2 className="text-center font-semibold text-[1.4rem]">
