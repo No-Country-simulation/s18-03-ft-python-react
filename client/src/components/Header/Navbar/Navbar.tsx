@@ -5,6 +5,8 @@ import { getUser } from "@/slices/userSlice";
 import Image from "next/image";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import Search from "@/components/Search/Search";
+import { CiChat1  } from "react-icons/ci";
+
 
 const Navbar = () => {
   const data = useAppSelector((state) => state.userReducer.user);
@@ -33,6 +35,11 @@ const Navbar = () => {
             </Link>
           ))}
           {user && (
+            <>
+            <Link className="hover:text-primary hover:border-b-[1px] text-white font-bold font-sans text-lg" href={`/messages`}>
+               <CiChat1 className="h-6 w-6 md:hidden" />
+              Messages
+            </Link>
             <Link
               href={`/profile/${user.spotify_id}`}
               className="flex flex-col items-center hover:text-primary"
@@ -45,6 +52,8 @@ const Navbar = () => {
                 alt={user.display_name}
               />
             </Link>
+            </>
+            
           )}
         </div>
       </nav>
@@ -62,7 +71,11 @@ const Navbar = () => {
         ))}
 
         {user && (
-          <Link href={`/profile/${user.spotify_id}`} className=" items-center hover:text-primary">
+          <>
+          <Link className="flex items-center justify-center hover:text-primary" href={`/messages`}>
+               <CiChat1 className="h-6 w-6 md:hidden" />
+            </Link>
+            <Link href={`/profile/${user.spotify_id}`} className=" items-center hover:text-primary">
             <Image
               src={user.profile_photo}
               width={40}
@@ -71,6 +84,8 @@ const Navbar = () => {
               alt={user.display_name}
             />
           </Link>
+          </>
+          
         )}
       </div>
     </div>
