@@ -10,7 +10,7 @@ interface Props {
   favGenres?: string[];
 }
 
-export default function CompatibilityBar({ favGenres, favArtists, favSongs }: Props) {
+export default function CompatibilityBar({ favGenres = [], favArtists = [], favSongs = [] }: Props) {
   const {compatibilityNumber} = useGetUserCompatibilityNumber(favGenres, favArtists, favSongs)
 
   console.log(favArtists)
